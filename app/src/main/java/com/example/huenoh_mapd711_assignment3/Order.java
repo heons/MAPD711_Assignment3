@@ -1,0 +1,72 @@
+package com.example.huenoh_mapd711_assignment3;
+
+public class Order {
+    private int orderId;
+    private int customerId;
+    private int productId;
+    private int employeeId;
+    private String orderDate;
+    private String status;
+
+    public Order() {
+    }
+
+    public Order(int orderId, int customerId, int productId, int employeeId, String orderDate, String status) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.productId = productId;
+        this.employeeId = employeeId;
+        this.orderDate = orderDate;
+        this.status = status;
+    }
+
+    // Getters
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    // Setters
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+}
