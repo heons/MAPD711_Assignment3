@@ -3,9 +3,7 @@ package com.example.huenoh_mapd711_assignment3;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
 
 public class CustomerManager extends OnlinePurchasingDBManager{
 
