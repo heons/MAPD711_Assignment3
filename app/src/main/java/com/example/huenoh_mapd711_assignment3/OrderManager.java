@@ -44,4 +44,9 @@ public class OrderManager extends OnlinePurchasingDBManager {
         db.close();
         return order;
     }
+
+    // TODO : getOrdersById
+    // TODO : getOrdersByStatus
+    // TODO : getAllOrders
+    // TODO : getOrdersEditable
 }

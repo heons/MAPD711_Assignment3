@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
         // Test Order Field in DB
         testAddOrder();
         testRetrieveOrder();
+
+        // TODO : check edit
+        // TODO : check delete
     }
 
 
