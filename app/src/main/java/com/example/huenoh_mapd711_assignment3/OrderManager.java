@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class OrderManager extends OnlinePurchasingDBManager {
     // table name and table creator string (SQL statement to create the table)
     // should be set from within main activity
-    public static final String TABLE_NAME = "Order";
+    public static final String TABLE_NAME = "Orders";
     public static final String TABLE_CREATE_STRING = "CREATE TABLE "+ TABLE_NAME
             + " (orderId integer primary key, customerId integer, productId integer" +
             ", employeeId integer, orderDate text, status text);";
