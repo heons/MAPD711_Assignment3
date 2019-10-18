@@ -43,4 +43,33 @@ public class ProductManager extends OnlinePurchasingDBManager {
         db.close();
         return product;
     }
+
+    // Get All products
+    public Product[] getAllProducts() throws  Exception{
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( "select * from " + TABLE_NAME, null );
+
+        // Get number of rows
+        final int cnt = cursor.getCount();
+
+        // Get all products
+        Product[] products = new Product[cnt];
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            for (int i = 0; i < cnt; ++i) {
+                Product product = new Product(
+                        cursor.getInt(0)
+                        , cursor.getString(1)
+                        , cursor.getDouble(2)
+                        , cursor.getInt(3)
+                        , cursor.getString(4));
+                products[i] = product;
+                cursor.moveToNext();
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return products;
+    }
 }
