@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         // Test Admin Field in DB
         testAddAdmin();
         testRetrieveAdmin();
+
+        // Test Product Field in DB
+        testAddProduct();
+        testRetrieveProduct();
     }
 
 
@@ -116,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     // Test function to Add Admin
     public void testAddAdmin() {
         // Initialize ContentValues object with the new admin
@@ -136,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     // Test function to Retrieve Admin
     public void testRetrieveAdmin()
     {
@@ -153,4 +159,45 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Error: ",exception.getMessage());
         }
     }
+
+
+    // Test function to Add Customer
+    public void testAddProduct() {
+        // Initialize ContentValues object with the new customer
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("productId", 1);
+        contentValues.put("productName", "iPhoneX");
+        contentValues.put("price", 1000.9);
+        contentValues.put("quantity", 1);
+        contentValues.put("category", "Mobile");
+
+        // Add to the DB
+        try {
+            productManager.addRow(contentValues, ProductManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+    }
+
+    // Test function to Retrieve Customer
+    public void testRetrieveProduct()
+    {
+        try {
+            Product product = productManager.getProductById("1" , "productId");
+            Log.d("main", Integer.toString(product.getProductId()));
+            Log.d("main", product.getProductName());
+            Log.d("main", Double.toString(product.getPrice()));
+            Log.d("main", Integer.toString(product.getQuantity()));
+            Log.d("main", product.getCategory());
+        }
+        catch (Exception exception)
+        {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+    }
+
+
 }
