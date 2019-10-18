@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">HuenOh_ MAPD711_Assignment3</string>
+    
+    <string name="login_userName">User Name</string>
+    <string name="login_password">Password</string>
+    <string name="login_rememberPassword">Remember Password</string>
+    <string name="login_login">Log In</string>
+    <string name="login_customer">Customer</string>
+    <string name="login_admin">Admin</string>
 </resources>
