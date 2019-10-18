@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         // Test Product Field in DB
         testAddProduct();
         testRetrieveProduct();
+
+        // Test Order Field in DB
+        testAddOrder();
+        testRetrieveOrder();
     }
 
 
@@ -161,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Test function to Add Customer
+    // Test function to Add Product
     public void testAddProduct() {
         // Initialize ContentValues object with the new customer
         ContentValues contentValues = new ContentValues();
@@ -181,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Test function to Retrieve Customer
+    // Test function to Retrieve Product
     public void testRetrieveProduct()
     {
         try {
@@ -198,6 +202,48 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Error: ",exception.getMessage());
         }
     }
+
+
+    // Test function to Add Order
+    public void testAddOrder() {
+        // Initialize ContentValues object with the new customer
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("orderId", 1);
+        contentValues.put("customerId", 1);
+        contentValues.put("productId", 1);
+        contentValues.put("employeeId", 1);
+        contentValues.put("orderDate", "2019-10-17");
+        contentValues.put("status", "processing");
+
+        // Add to the DB
+        try {
+            orderManager.addRow(contentValues, OrderManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a order added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+    }
+
+    // Test function to Retrieve Order
+    public void testRetrieveOrder()
+    {
+        try {
+            Order order = orderManager.getOrderById("1" , "orderId");
+            Log.d("main", "orderId : " + Integer.toString(order.getOrderId()));
+            Log.d("main", "customerId : " + Integer.toString(order.getCustomerId()));
+            Log.d("main", "productId : " + Integer.toString(order.getProductId()));
+            Log.d("main", "employeeId : " + Integer.toString(order.getEmployeeId()));
+            Log.d("main", "orderDate : " + order.getOrderDate());
+            Log.d("main", "status : " + order.getStatus());
+        }
+        catch (Exception exception)
+        {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+    }
+
 
 
 }
