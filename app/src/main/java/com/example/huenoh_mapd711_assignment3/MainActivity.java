@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         // Test Product Field in DB
         testAddProduct();
         testRetrieveProduct();
+        Product[] products = testRetrieveAllProducts();
 
         // Test Order Field in DB
         testAddOrder();
@@ -145,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     // Test function to Retrieve Admin
     public void testRetrieveAdmin()
     {
@@ -183,6 +183,23 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
         }
+
+        // Initialize ContentValues object with the new customer
+        contentValues = new ContentValues();
+        contentValues.put("productId", 2);
+        contentValues.put("productName", "iPhoneXR");
+        contentValues.put("price", 1100.9);
+        contentValues.put("quantity", 10);
+        contentValues.put("category", "Mobile");
+
+        // Add to the DB
+        try {
+            productManager.addRow(contentValues, ProductManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
     }
 
     // Test function to Retrieve Product
@@ -201,6 +218,21 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ",exception.getMessage());
         }
+    }
+
+    // Test function to Retrieve all products
+    public Product[] testRetrieveAllProducts() {
+        try {
+            Product[] products = productManager.getAllProducts();
+            return products;
+        }
+        catch (Exception exception)
+        {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+
+        return null;
     }
 
 
