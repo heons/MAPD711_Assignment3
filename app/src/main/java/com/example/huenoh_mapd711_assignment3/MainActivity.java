@@ -65,12 +65,16 @@ public class MainActivity extends AppCompatActivity {
         // Test Customer Field in DB
         testAddCustomer();
         testRetrieveCustomer();
+
+        // Test Admin Field in DB
+        testAddAdmin();
+        testRetrieveAdmin();
     }
 
 
     // Test function to Add Customer
     public void testAddCustomer() {
-        // Initialize ContentValues object with the new car
+        // Initialize ContentValues object with the new customer
         ContentValues contentValues = new ContentValues();
         contentValues.put("customerId", 1);
         contentValues.put("userName", "heon");
@@ -112,5 +116,41 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Test function to Add Admin
+    public void testAddAdmin() {
+        // Initialize ContentValues object with the new admin
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("employeeId", 1);
+        contentValues.put("userName", "heon_admin");
+        contentValues.put("password", "pwd_amdin");
+        contentValues.put("firstName", "huenAdmin");
+        contentValues.put("lastName", "ohAdmin");
 
+        // Add to the DB
+        try {
+            adminManager.addRow(contentValues, AdminManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a admin added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+    }
+
+    // Test function to Retrieve Admin
+    public void testRetrieveAdmin()
+    {
+        try {
+            Admin admin = adminManager.getAdminById("1" , "employeeId");
+            Log.d("main", Integer.toString(admin.getEmployeeId()));
+            Log.d("main", admin.getUserName());
+            Log.d("main", admin.getPassword());
+            Log.d("main", admin.getFirstName());
+            Log.d("main", admin.getLastName());
+        }
+        catch (Exception exception)
+        {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+    }
 }
