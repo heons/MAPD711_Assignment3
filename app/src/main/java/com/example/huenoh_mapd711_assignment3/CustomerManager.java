@@ -3,9 +3,13 @@ package com.example.huenoh_mapd711_assignment3;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 
 public class CustomerManager extends OnlinePurchasingDBManager{
+
+    // TAG for the log
+    private static final String TAG = "CustomerManager";
 
     // table name and table creator string (SQL statement to create the table)
     // should be set from within main activity
@@ -46,5 +50,22 @@ public class CustomerManager extends OnlinePurchasingDBManager{
 
         db.close();
         return customer;
+    }
+
+    /**
+     * It checks the existance of a Customer record
+     * @param id           Cutomer's ID or a value of the FieldName
+     * @param strFieldName FieldName of a customer record to check
+     * @return             True if the record exists, otherwise false
+     */
+    public boolean checkCustumerById(Object id, String strFieldName) {
+        boolean rc = false;
+        try {
+            rc = super.checkItemById(id, strFieldName, this.TABLE_NAME);
+        } catch  (Exception exception) {
+            Log.i(this.TAG + " Error: ", exception.getMessage());
+            rc = false;
+        }
+        return rc;
     }
 }
