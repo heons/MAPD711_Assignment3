@@ -2,6 +2,7 @@ package com.example.huenoh_mapd711_assignment3;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -68,6 +69,28 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
             db.close(); //close database connection
         }
         return nr > -1;
+    }
+
+    /**
+     * It check the existance of the record by it's id, fieldName, TableName
+     * @param id           Object ID or a value of the FieldName
+     * @param strFieldName FieldName of the record to check
+     * @param strTableName TableName of the record to check
+     * @return             True if the record exists, otherwise false
+     * @throws Exception
+     */
+    public boolean checkItemById(Object id, String strFieldName, String strTableName) throws  Exception{
+        boolean rc = false;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( "select * from " + strTableName + " where "+ strFieldName + "='"+String.valueOf(id)+"'", null );
+
+        if (cursor.moveToFirst()) { //if a row exists
+            rc = true;
+        } else {}
+
+        cursor.close();
+        db.close();
+        return rc;
     }
 
     // id - an Object which holds the primary key value
