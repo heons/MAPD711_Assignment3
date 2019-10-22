@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         testRetrieveCustomer();
         testEditCustomer();
         testRetrieveCustomer();
+        testDeleteCustomer();
+        testRetrieveCustomer();
 
         // Test Admin Field in DB
         testAddAdmin();
@@ -82,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         testRetrieveOrder();
 
         // TODO : check edit -> It is tested, but only to specific case of Customer
-        // TODO : check delete
     }
 
 
@@ -140,6 +141,18 @@ public class MainActivity extends AppCompatActivity {
         try {
             customerManager.editRow("1", "customerId", contentValues, CustomerManager.TABLE_NAME);
             Toast.makeText(MainActivity.this, "a customer edited", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+    }
+
+    // Test function to Edit Customer
+    public void testDeleteCustomer() {
+        // Delete to the DB
+        try {
+            customerManager.deleteRow("1", "customerId", CustomerManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a customer deleted", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
