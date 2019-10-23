@@ -72,10 +72,23 @@ public class CustomerManager extends OnlinePurchasingDBManager{
             rc = super.checkItemById(id, strFieldName, this.TABLE_NAME);
             //rc = super.checkItemById(id, "tmp", this.TABLE_NAME); // This cause an exception
             //rc = super.checkItemById(id, strFieldName, "tmp");    // This cause an exception
-        } catch  (Exception exception) {
+        } catch (Exception exception) {
             Log.i(this.TAG + " Error: ", exception.getMessage());
             rc = false;
         }
         return rc;
+    }
+
+    /**
+     * This method deletes all the records
+     * @return True if it succeeded, False otherwise
+     */
+    public boolean deleteAll() {
+        try {
+            return super.deleteAllRows(this.TABLE_NAME);
+        } catch (Exception exception) {
+            Log.i(this.TAG + " Error: ", exception.getMessage());
+            return false;
+        }
     }
 }
