@@ -93,30 +93,46 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
         return rc;
     }
 
-    // id - an Object which holds the primary key value
-    // fieldName - the  name of the primary key field
-    // values - a ContentValues object that holds row values
-    // Insert the row
-    public boolean editRow (Object id, String fieldName, ContentValues values, String strTableName) throws Exception {
-        long nr = -1;
+    /**
+     * Edit a record
+     * @param id           Object ID or a value of the FieldName
+     * @param strFieldName FieldName of a record
+     * @param values       Values to edit. Key-Value
+     * @param strTableName TableName of a record
+     * @return             The number of rows affected
+     * @throws Exception
+     */
+    public long editRow (Object id, String strFieldName, ContentValues values, String strTableName) throws Exception {
+        long nr = 0;
         if(tableNames.contains(strTableName))
         {
             SQLiteDatabase db = this.getWritableDatabase();
-            // TODO : check the existence of the data first.
-            nr = db.update(strTableName, values, fieldName + " = ?", new String[]{String.valueOf(id)});
+            nr = db.update(strTableName, values, strFieldName + " = ?", new String[]{String.valueOf(id)});
             db.close(); //close database connection
         }
-        return nr > -1;
+        return nr;
     }
 
     // delete a row
-    public void deleteRow(Object id, String fieldName, String strTableName) throws Exception {
+
+    /**
+     * Delete a record
+     * @param id           Object ID or a value of the FieldName
+     * @param strFieldName FieldName of a record
+     * @param strTableName TableName of a record
+     * @return             The number of rows affected
+     * @throws Exception
+     */
+    public long deleteRow(Object id, String strFieldName, String strTableName) throws Exception {
+        long rc = 0;
+
         if(tableNames.contains(strTableName))
         {
             SQLiteDatabase db = this.getWritableDatabase();
-            // TODO : check the existence of the data first.
-            db.delete(strTableName, fieldName + " = ?", new String[] { String.valueOf(id) });
+            rc = db.delete(strTableName, strFieldName + " = ?", new String[] { String.valueOf(id) });
             db.close(); //close database connection
         }
+
+        return rc;
     }
 }
