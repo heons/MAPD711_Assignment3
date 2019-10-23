@@ -44,4 +44,6 @@ public class AdminManager extends OnlinePurchasingDBManager {
         db.close();
         return admin;
     }
+
+    // TODO : Override addRow() adding checking Unique UserName
 }

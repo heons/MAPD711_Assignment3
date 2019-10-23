@@ -91,4 +91,6 @@ public class CustomerManager extends OnlinePurchasingDBManager{
             return false;
         }
     }
+
+    // TODO : Override addRow() adding checking Unique UserName
 }

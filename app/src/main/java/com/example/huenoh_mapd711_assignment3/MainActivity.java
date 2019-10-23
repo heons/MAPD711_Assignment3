@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         checkDeleteCustomer = customerManager.deleteAll();
         testAddCustomer();
         checkCustomer = customerManager.checkCustomerById(1, "customerId");
+        loginCustomer("heon", "xx");
+        //loginCustomer("hh", "xx");
         testRetrieveCustomer();
         testEditCustomer();
         testRetrieveCustomer();
@@ -91,6 +93,30 @@ public class MainActivity extends AppCompatActivity {
         testRetrieveOrder();
 
         // TODO : check edit -> It is tested, but only to specific case of Customer
+    }
+
+
+    // Test function to try login as Customer
+    // TODO : Create loginAdmin just like this
+    public boolean loginCustomer(String strUserName, String strPassword)
+    {
+        boolean rc = false;
+
+        try {
+            Customer customer = customerManager.getCustomerById(strUserName , "userName");
+            if (null != customer) {
+                if(customer.getPassword().equals(strPassword)) {
+                    rc = true;
+                } else {}
+            } else {}
+        }
+        catch (Exception exception)
+        {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+
+        return rc;
     }
 
 
@@ -137,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Error: ",exception.getMessage());
         }
     }
+
 
     // Test function to Edit Customer
     public void testEditCustomer() {
@@ -206,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // TODO : modify this to addProducts
     // Test function to Add Product
     public void testAddProduct() {
         // Initialize ContentValues object with the new customer
@@ -318,6 +346,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // TODO : add placeAnOrder()
 
 
 
