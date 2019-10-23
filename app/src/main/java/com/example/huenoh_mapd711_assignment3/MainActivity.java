@@ -73,25 +73,27 @@ public class MainActivity extends AppCompatActivity {
 
         // Test Customer Field in DB
         boolean checkCustomer = false;
-        boolean checkDeleteCustomer = false;
 
-        checkDeleteCustomer = customerManager.deleteAll();
-        addCustomer();
-        checkDeleteCustomer = customerManager.deleteAll();
-        addCustomer();
-        checkCustomer = customerManager.checkCustomerById(1, "customerId");
-        loginCustomer("heon", "xx");
+        //boolean checkDeleteCustomer = customerManager.deleteAll();
+
+        // Add to the DB
+        addCustomer(); // Add a customer
+        addAdmin();    // Add an admin
+        addProducts(); // Add products
+
+        loginCustomer("heon", "pwd");
         //loginCustomer("hh", "xx");
+
         testEditCustomer();
         testDeleteCustomer();
         checkCustomer = customerManager.checkCustomerById(1, "customerId");
 
         // Test Admin Field in DB
-        testAddAdmin();
+
         testRetrieveAdmin();
 
         // Test Product Field in DB
-        addProducts();
+
         testRetrieveProduct();
         Product[] products = testRetrieveAllProducts();
 
@@ -196,6 +198,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Add an admin
+     */
+    public void addAdmin() {
+        // Initialize ContentValues object with the new admin
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("employeeId", 1);
+        contentValues.put("userName", "angad");
+        contentValues.put("password", "admin");
+        contentValues.put("firstName", "Angadjot");
+        contentValues.put("lastName", "Modi");
+
+        // Add to the DB
+        try {
+            adminManager.addRow(contentValues, AdminManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a admin added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+    }
+
 
     // Test function to Edit Customer
     public void testEditCustomer() {
@@ -226,25 +250,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Test function to Add Admin
-    public void testAddAdmin() {
-        // Initialize ContentValues object with the new admin
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("employeeId", 1);
-        contentValues.put("userName", "heon_admin");
-        contentValues.put("password", "pwd_amdin");
-        contentValues.put("firstName", "huenAdmin");
-        contentValues.put("lastName", "ohAdmin");
-
-        // Add to the DB
-        try {
-            adminManager.addRow(contentValues, AdminManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a admin added", Toast.LENGTH_SHORT).show();
-        } catch (Exception exception) {
-            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ", exception.getMessage());
-        }
-    }
 
     // Test function to Retrieve Admin
     public void testRetrieveAdmin()
