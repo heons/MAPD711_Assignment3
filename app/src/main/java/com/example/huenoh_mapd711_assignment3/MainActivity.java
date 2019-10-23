@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Test Customer Field in DB
         boolean checkCustomer = false;
+        boolean checkDeleteCustomer = false;
+
+        checkDeleteCustomer = customerManager.deleteAll();
+        testAddCustomer();
+        checkDeleteCustomer = customerManager.deleteAll();
         testAddCustomer();
         checkCustomer = customerManager.checkCustomerById(1, "customerId");
         testRetrieveCustomer();
@@ -311,6 +316,8 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Error: ",exception.getMessage());
         }
     }
+
+
 
 
 
