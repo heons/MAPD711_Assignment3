@@ -121,10 +121,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-    // Test function to try login as Customer
-    // TODO : Create loginAdmin just like this
+    /**
+     * This method try login as Customer
+     * @param strUserName UserName of the customer
+     * @param strPassword Password of the customer
+     * @return            True if it succeeded, false otherwise.
+     */
     public boolean loginCustomer(String strUserName, String strPassword)
     {
         boolean rc = false;
@@ -133,6 +135,33 @@ public class MainActivity extends AppCompatActivity {
             Customer customer = customerManager.getCustomerById(strUserName , "userName");
             if (null != customer) {
                 if(customer.getPassword().equals(strPassword)) {
+                    rc = true;
+                } else {}
+            } else {}
+        }
+        catch (Exception exception)
+        {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+
+        return rc;
+    }
+
+    /**
+     * This method try login as Admin
+     * @param strUserName UserName of the admin
+     * @param strPassword Password of the admin
+     * @return            True if it succeeded, false otherwise.
+     */
+    public boolean loginAdmin(String strUserName, String strPassword)
+    {
+        boolean rc = false;
+
+        try {
+            Admin admin = adminManager.getAdminById(strUserName , "userName");
+            if (null != admin) {
+                if(admin.getPassword().equals(strPassword)) {
                     rc = true;
                 } else {}
             } else {}
