@@ -61,7 +61,7 @@ public class CustomerManager extends OnlinePurchasingDBManager{
     }
 
     /**
-     * This method the existance of a Customer record
+     * This method check the existance of a Customer record
      * @param id           Customer's ID or a value of the FieldName
      * @param strFieldName FieldName of a customer record to check
      * @return             True if the record exists, otherwise false
@@ -70,6 +70,8 @@ public class CustomerManager extends OnlinePurchasingDBManager{
         boolean rc = false;
         try {
             rc = super.checkItemById(id, strFieldName, this.TABLE_NAME);
+            //rc = super.checkItemById(id, "tmp", this.TABLE_NAME); // This cause an exception
+            //rc = super.checkItemById(id, strFieldName, "tmp");    // This cause an exception
         } catch  (Exception exception) {
             Log.i(this.TAG + " Error: ", exception.getMessage());
             rc = false;
