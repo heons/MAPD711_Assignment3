@@ -18,22 +18,30 @@ public class CustomerManager extends OnlinePurchasingDBManager{
             + " (customerId integer primary key, userName text, password text" +
             ", firstName text, lastName text, address text, city text, postalCode text);";
 
+    /**
+     * Initializer
+     * @param context Context to work on
+     */
     public CustomerManager(Context context) {
         super(context);
         super.dbInitialize(TABLE_NAME, TABLE_CREATE_STRING);
     }
 
-    // This method returns a student object which holds the table row with the given id
-    // The following argument should be passed:
-    // id - an Object which holds the primary key value
-    // fieldName - the  name of the primary key field
-    public Customer getCustomerById(Object id, String fieldName) throws  Exception{
+    /**
+     * This method returns a customer object which holds the table row with the given id
+     * @param id           Customer's ID or a value of the FieldName
+     * @param strFieldName FieldName of a customer record
+     * @return             Customer object or a null
+     * @throws Exception
+     */
+    public Customer getCustomerById(Object id, String strFieldName) throws  Exception{
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery( "select * from " + TABLE_NAME + " where "+ fieldName + "='"+String.valueOf(id)+"'", null );
-        Customer customer = new Customer(); //create a new Student object
-        if (cursor.moveToFirst()) { //if row exists
-            cursor.moveToFirst(); //move to first row
-            //initialize the instance variables of customer object
+        Cursor cursor = db.rawQuery( "select * from " + TABLE_NAME + " where "+ strFieldName + "='"+String.valueOf(id)+"'", null );
+        Customer customer = new Customer(); //create a new Customer object
+
+        if (cursor.moveToFirst()) { //if a row exists
+            cursor.moveToFirst(); //move to the first row
+            //initialize the instance variables of a customer object
             customer.setCustomerId(cursor.getInt(0));
             customer.setUserName(cursor.getString(1));
             customer.setPassword(cursor.getString(2));
@@ -53,12 +61,12 @@ public class CustomerManager extends OnlinePurchasingDBManager{
     }
 
     /**
-     * It checks the existance of a Customer record
-     * @param id           Cutomer's ID or a value of the FieldName
+     * This method the existance of a Customer record
+     * @param id           Customer's ID or a value of the FieldName
      * @param strFieldName FieldName of a customer record to check
      * @return             True if the record exists, otherwise false
      */
-    public boolean checkCustumerById(Object id, String strFieldName) {
+    public boolean checkCustomerById(Object id, String strFieldName) {
         boolean rc = false;
         try {
             rc = super.checkItemById(id, strFieldName, this.TABLE_NAME);
