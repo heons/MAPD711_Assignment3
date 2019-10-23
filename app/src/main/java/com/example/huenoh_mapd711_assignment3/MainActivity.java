@@ -139,9 +139,8 @@ public class MainActivity extends AppCompatActivity {
             prefEditor.putString("name", userName);
             prefEditor.commit();
 
-//            Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
-//            intent.putExtra("intValue",0);
-//            startActivity(intent);
+            Intent intent = new Intent(MainActivity.this,ShoppingActivity.class);
+            startActivity(intent);
 
             System.out.println("successfull login users");
         }
