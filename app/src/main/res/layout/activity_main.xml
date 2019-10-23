@@ -15,46 +15,99 @@
         android:layout_marginTop="100dp"
         android:text="Online Purchasing App"
         android:textColor="#F44336"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textSize="30dp" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
-        android:text="Login as :"
-        android:textColor="#141313"
-        android:textSize="24sp"
+        android:text="UserName"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Please enter the UserName"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
 
-    <Button
-        android:id="@+id/managerBtn"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:onClick="onClickAdminButton"
-        android:text="@string/login_admin"
-        android:textColor="#F44336"
-        android:textSize="18dp" />
+        android:text="Password"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Please enter the Password"
+        android:inputType="textPersonName"
+        />
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radioGrp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Admin"
+                    android:textSize="18dp"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/radioUsers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Users"
+                    android:textSize="18dp" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+
+
 
     <Button
-        android:id="@+id/userBtn"
+        android:id="@+id/loginButton"
         android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Customers"
-        android:onClick="onClickCustomerButton"
-        android:textColor="#F44336"
-        android:textSize="18dp" />
-
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Login"
+        android:onClick="onClickLoginButton"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 
 

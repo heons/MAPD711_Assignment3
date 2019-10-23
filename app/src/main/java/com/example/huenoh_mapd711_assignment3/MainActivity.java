@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,17 +23,42 @@ public class MainActivity extends AppCompatActivity {
     private OrderManager orderManager;
 
 
-    Button managerBtn,userButton;
     int checkIfAdminOrCustomer = 0;
-
+    EditText editTextName,editTextPassword;
+    Button loginButton;
+    RadioButton radioButtonAdmin,radioButtonUsers;
+    int radioButtonValue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        managerBtn = findViewById(R.id.managerBtn);
-        userButton = findViewById(R.id.userBtn);
+        editTextName = findViewById(R.id.editTextName);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        loginButton = findViewById(R.id.loginButton);
+        radioButtonAdmin = findViewById(R.id.radioAdmin);
+        radioButtonUsers = findViewById(R.id.radioUsers);
+
+
+
+
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGrp);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rb1 = (RadioButton) findViewById(R.id.radioAdmin);
+                if(rb1.isChecked()){
+                    //printToast("Yes, checked!");
+                    radioButtonValue = 0;
+                    Toast.makeText(getApplicationContext(),"Yes", Toast.LENGTH_LONG).show();
+                } else {
+                    radioButtonValue = 1;
+//                    printToast("No checked!");
+                }
+            }
+        });
+
 
         // instantiate the CustomerManager
         try {
@@ -83,17 +112,39 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void onClickAdminButton(View view){
-        Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
-        intent.putExtra("intValue",0);
-        startActivity(intent);
-    }
+    public void onClickLoginButton(View view){
+
+        String userName = editTextName.getText().toString();
+        String userPassword = editTextPassword.getText().toString();
+
+        if (radioButtonValue == 0){
+             loginAdmin(userName,userPassword);
+                System.out.println("successfull login admin");
+
+                SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
+                SharedPreferences.Editor prefEditor = preferences.edit();
+                prefEditor.putString("name", userName);
+                prefEditor.commit();
+
+//            Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
+//            intent.putExtra("intValue",0);
+//            startActivity(intent);
 
 
-    public void onClickCustomerButton(View view){
-        Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
-        intent.putExtra("intValue",1);
-        startActivity(intent);
+        }else{
+
+            loginCustomer(userName,userPassword);
+            SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
+            SharedPreferences.Editor prefEditor = preferences.edit();
+            prefEditor.putString("name", userName);
+            prefEditor.commit();
+
+//            Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
+//            intent.putExtra("intValue",0);
+//            startActivity(intent);
+
+            System.out.println("successfull login users");
+        }
     }
 
 
@@ -112,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             if (null != customer) {
                 if(customer.getPassword().equals(strPassword)) {
                     rc = true;
+
                 } else {}
             } else {}
         }
