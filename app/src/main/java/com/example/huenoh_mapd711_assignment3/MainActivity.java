@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         testRetrieveAdmin();
 
         // Test Product Field in DB
-        testAddProduct();
+        addProducts();
         testRetrieveProduct();
         Product[] products = testRetrieveAllProducts();
 
@@ -260,9 +260,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // TODO : modify this to addProducts
-    // Test function to Add Product
-    public void testAddProduct() {
+    // Add Products
+    public void addProducts() {
         // Initialize ContentValues object with the new customer
         ContentValues contentValues = new ContentValues();
         contentValues.put("productId", 1);
