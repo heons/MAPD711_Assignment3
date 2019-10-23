@@ -82,11 +82,8 @@ public class MainActivity extends AppCompatActivity {
         checkCustomer = customerManager.checkCustomerById(1, "customerId");
         loginCustomer("heon", "xx");
         //loginCustomer("hh", "xx");
-        testRetrieveCustomer();
         testEditCustomer();
-        testRetrieveCustomer();
         testDeleteCustomer();
-        testRetrieveCustomer();
         checkCustomer = customerManager.checkCustomerById(1, "customerId");
 
         // Test Admin Field in DB
@@ -196,27 +193,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
-        }
-    }
-
-    // Test function to Retrieve Customer
-    public void testRetrieveCustomer()
-    {
-        try {
-            Customer customer = customerManager.getCustomerById("1" , "customerId");
-            Log.d("main", Integer.toString(customer.getCustomerId()));
-            Log.d("main", customer.getUserName());
-            Log.d("main", customer.getPassword());
-            Log.d("main", customer.getFirstName());
-            Log.d("main", customer.getLastName());
-            Log.d("main", customer.getAddress());
-            Log.d("main", customer.getCity());
-            Log.d("main", customer.getPostalCode());
-        }
-        catch (Exception exception)
-        {
-            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ",exception.getMessage());
         }
     }
 
