@@ -150,4 +150,22 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
 
         return rc;
     }
+
+    /**
+     * This method deletes all records in a table and return status
+     * @param strTableName TableName of the records
+     * @return             The number of rows affected
+     * @throws Exception
+     */
+    public boolean deleteAllRows(String strTableName) throws Exception {
+        long rc = 0;
+
+        if(tableNames.contains(strTableName)) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            rc = db.delete(strTableName, null, null);
+            db.close(); //close database connection
+        }
+
+        return rc > 0;
+    }
 }
