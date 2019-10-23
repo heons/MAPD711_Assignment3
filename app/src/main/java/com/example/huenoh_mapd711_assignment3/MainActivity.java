@@ -234,6 +234,57 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
         }
+
+        // Initialize ContentValues object with the new customer
+        contentValues = new ContentValues();
+        contentValues.put("productId", 3);
+        contentValues.put("productName", "LG v30");
+        contentValues.put("price", 500);
+        contentValues.put("quantity", 10);
+        contentValues.put("category", "Mobile");
+
+        // Add to the DB
+        try {
+            productManager.addRow(contentValues, ProductManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+
+        // Initialize ContentValues object with the new customer
+        contentValues = new ContentValues();
+        contentValues.put("productId", 4);
+        contentValues.put("productName", "LG G7");
+        contentValues.put("price", 610.10);
+        contentValues.put("quantity", 10);
+        contentValues.put("category", "Mobile");
+
+        // Add to the DB
+        try {
+            productManager.addRow(contentValues, ProductManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+
+        // Initialize ContentValues object with the new customer
+        contentValues = new ContentValues();
+        contentValues.put("productId", 5);
+        contentValues.put("productName", "Samsung S9");
+        contentValues.put("price", 610.10);
+        contentValues.put("quantity", 10);
+        contentValues.put("category", "Mobile");
+
+        // Add to the DB
+        try {
+            productManager.addRow(contentValues, ProductManager.TABLE_NAME);
+            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
     }
-    
+
 }
