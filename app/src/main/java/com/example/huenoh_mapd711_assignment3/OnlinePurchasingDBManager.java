@@ -14,33 +14,46 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "OnlinePurchasingDB";
     private static final int DATABASE_VERSION = 1;
 
+    // Table names and queries to create them
     private static Set<String> tableNames = new HashSet<String>();
     private static Set<String> tableCreatorStrings = new HashSet<String>();
 
+
+    /** Initializer
+     * @param context Context to work on
+     */
     public OnlinePurchasingDBManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Called when the database is created for the first time.
-    // This is where the creation of tables and the initial population
-    // of the tables should happen.
+    /**
+     * This method is called when the database is created for the first time.
+     * This is where the creation of tables and the initial population
+     * of the tables should happen.
+     * @param db SQLite database
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //create the table
+        //create the tables
         for(String tableCreatorString : tableCreatorStrings){
             db.execSQL(tableCreatorString);
         }
     }
 
-    // Called when the database needs to be upgraded.
-    // The implementation should use this method to drop tables,
-    // add tables, or do anything else it needs to upgrade
-    // to the new schema version.
+    /**
+     * This method is called when the database needs to be upgraded.
+     *  The implementation should use this method to drop tables,
+     *  add tables, or do anything else it needs to upgrade
+     *  to the new schema version.
+     * @param db         SQLite database
+     * @param oldVersion Old version
+     * @param newVersion New version
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)   {
         if(newVersion > oldVersion) {
             //drop table if existed
-            for(String tableName : tableNames){
+            for(String tableName : tableNames) {
                 db.execSQL("DROP TABLE IF EXISTS " + tableName);
             }
             //recreate the table
@@ -48,22 +61,28 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * This method initialize parameters for the DB by adding tables
+     * @param tableName          TableName
+     * @param tableCreatorString Query to create a table with TableName
+     */
     public void dbInitialize(String tableName, String tableCreatorString)
     {
         this.tableNames.add(tableName);
         this.tableCreatorStrings.add(tableCreatorString);
     }
 
-
-    // CRUD Operations
-    // This method is called by the activity to add a row in the table
-    // The following arguments should be passed:
-    // values - a ContentValues object that holds row values
+    /**
+     * This method add a record
+     * @param values       Values to add. Key-Value pairs.
+     * @param strTableName TableName of the record
+     * @return             True if a record is added
+     * @throws Exception
+     */
     public boolean addRow(ContentValues values, String strTableName) throws Exception {
         long nr = -1;
         // Insert the row
-        if(tableNames.contains(strTableName))
-        {
+        if(tableNames.contains(strTableName)) {
             SQLiteDatabase db = this.getWritableDatabase();
             nr = db.insert(strTableName, null, values);
             db.close(); //close database connection
@@ -72,7 +91,7 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
     }
 
     /**
-     * It check the existance of the record by it's id, fieldName, TableName
+     * This method checks the existance of the record by it's id, fieldName, TableName
      * @param id           Object ID or a value of the FieldName
      * @param strFieldName FieldName of the record to check
      * @param strTableName TableName of the record to check
@@ -94,18 +113,17 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
     }
 
     /**
-     * Edit a record
+     * This method edit a record and return the number of rows affected
      * @param id           Object ID or a value of the FieldName
      * @param strFieldName FieldName of a record
-     * @param values       Values to edit. Key-Value
+     * @param values       Values to edit. Key-Value pairs.
      * @param strTableName TableName of a record
      * @return             The number of rows affected
      * @throws Exception
      */
     public long editRow (Object id, String strFieldName, ContentValues values, String strTableName) throws Exception {
         long nr = 0;
-        if(tableNames.contains(strTableName))
-        {
+        if(tableNames.contains(strTableName)) {
             SQLiteDatabase db = this.getWritableDatabase();
             nr = db.update(strTableName, values, strFieldName + " = ?", new String[]{String.valueOf(id)});
             db.close(); //close database connection
@@ -113,10 +131,8 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
         return nr;
     }
 
-    // delete a row
-
     /**
-     * Delete a record
+     * This method deletes a record and return the number of rows affected
      * @param id           Object ID or a value of the FieldName
      * @param strFieldName FieldName of a record
      * @param strTableName TableName of a record
@@ -126,8 +142,7 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
     public long deleteRow(Object id, String strFieldName, String strTableName) throws Exception {
         long rc = 0;
 
-        if(tableNames.contains(strTableName))
-        {
+        if(tableNames.contains(strTableName)) {
             SQLiteDatabase db = this.getWritableDatabase();
             rc = db.delete(strTableName, strFieldName + " = ?", new String[] { String.valueOf(id) });
             db.close(); //close database connection
