@@ -3,8 +3,11 @@ package com.example.huenoh_mapd711_assignment3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,10 +19,17 @@ public class MainActivity extends AppCompatActivity {
     private OrderManager orderManager;
 
 
+    Button managerBtn,userButton;
+    int checkIfAdminOrCustomer = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        managerBtn = findViewById(R.id.managerBtn);
+        userButton = findViewById(R.id.userBtn);
 
         // instantiate the CustomerManager
         try {
@@ -94,6 +104,23 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO : check edit -> It is tested, but only to specific case of Customer
     }
+
+
+
+    public void onClickAdminButton(View view){
+        Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
+        intent.putExtra("intValue",0);
+        startActivity(intent);
+    }
+
+
+    public void onClickCustomerButton(View view){
+        Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
+        intent.putExtra("intValue",1);
+        startActivity(intent);
+    }
+
+
 
 
     // Test function to try login as Customer

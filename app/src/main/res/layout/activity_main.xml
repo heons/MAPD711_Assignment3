@@ -1,49 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TableRow>
 
-        <TextView
-            android:width="120dp"
-            android:text="@string/login_userName" />
-
-        <EditText
-            android:id="@+id/txtUserName"
-            android:width="200dp" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView android:text="@string/login_password" />
-
-        <EditText
-            android:id="@+id/txtPassword"
-            android:password="true" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView />
-
-        <CheckBox
-            android:id="@+id/chkRememberPassword"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_rememberPassword" />
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/btnSignIn"
-            android:text="@string/login_login" />
-    </TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Online Purchasing App"
+        android:textColor="#F44336"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
 
-</TableLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Login as :"
+        android:textColor="#141313"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/managerBtn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onClickAdminButton"
+        android:text="@string/login_admin"
+        android:textColor="#F44336"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/userBtn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Customers"
+        android:onClick="onClickCustomerButton"
+        android:textColor="#F44336"
+        android:textSize="18dp" />
+
+
+
+
+
+
+</LinearLayout>
