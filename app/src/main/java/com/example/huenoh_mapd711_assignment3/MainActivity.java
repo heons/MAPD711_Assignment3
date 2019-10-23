@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -63,12 +62,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Test Customer Field in DB
+        boolean checkCustomer = false;
         testAddCustomer();
+        checkCustomer = customerManager.checkCustomerById(1, "customerId");
         testRetrieveCustomer();
         testEditCustomer();
         testRetrieveCustomer();
         testDeleteCustomer();
         testRetrieveCustomer();
+        checkCustomer = customerManager.checkCustomerById(1, "customerId");
 
         // Test Admin Field in DB
         testAddAdmin();
