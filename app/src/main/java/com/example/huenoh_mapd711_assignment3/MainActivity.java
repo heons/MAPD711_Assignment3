@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         boolean checkDeleteCustomer = false;
 
         checkDeleteCustomer = customerManager.deleteAll();
-        testAddCustomer();
+        addCustomer();
         checkDeleteCustomer = customerManager.deleteAll();
-        testAddCustomer();
+        addCustomer();
         checkCustomer = customerManager.checkCustomerById(1, "customerId");
         loginCustomer("heon", "xx");
         //loginCustomer("hh", "xx");
@@ -175,9 +175,10 @@ public class MainActivity extends AppCompatActivity {
         return rc;
     }
 
-
-    // Test function to Add Customer
-    public void testAddCustomer() {
+    /**
+     * Add a customer
+     */
+    public void addCustomer() {
         // Initialize ContentValues object with the new customer
         ContentValues contentValues = new ContentValues();
         contentValues.put("customerId", 1);
@@ -192,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
         // Add to the DB
         try {
             customerManager.addRow(contentValues, CustomerManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a customer added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
