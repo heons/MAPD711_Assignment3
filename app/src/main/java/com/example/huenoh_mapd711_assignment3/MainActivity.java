@@ -81,21 +81,8 @@ public class MainActivity extends AppCompatActivity {
         addAdmin();    // Add an admin
         addProducts(); // Add products
 
-        loginCustomer("heon", "pwd");
-        //loginCustomer("hh", "xx");
-
-        testEditCustomer();
-        testDeleteCustomer();
-        checkCustomer = customerManager.checkCustomerById(1, "customerId");
-
-        // Test Admin Field in DB
-
-        testRetrieveAdmin();
-
         // Test Product Field in DB
-
-        testRetrieveProduct();
-        Product[] products = testRetrieveAllProducts();
+        //Product[] products = testRetrieveAllProducts();
 
         // Test Order Field in DB
         testAddOrder();
@@ -221,55 +208,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Test function to Edit Customer
-    public void testEditCustomer() {
-        // Initialize ContentValues object with the fields to be edited
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("city", "toronto");
-
-        // Edit to the DB
-        try {
-            customerManager.editRow("1", "customerId", contentValues, CustomerManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a customer edited", Toast.LENGTH_SHORT).show();
-        } catch (Exception exception) {
-            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ", exception.getMessage());
-        }
-    }
-
-    // Test function to Edit Customer
-    public void testDeleteCustomer() {
-        // Delete to the DB
-        try {
-            customerManager.deleteRow("1", "customerId", CustomerManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a customer deleted", Toast.LENGTH_SHORT).show();
-        } catch (Exception exception) {
-            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ", exception.getMessage());
-        }
-    }
-
-
-
-    // Test function to Retrieve Admin
-    public void testRetrieveAdmin()
-    {
-        try {
-            Admin admin = adminManager.getAdminById("1" , "employeeId");
-            Log.d("main", Integer.toString(admin.getEmployeeId()));
-            Log.d("main", admin.getUserName());
-            Log.d("main", admin.getPassword());
-            Log.d("main", admin.getFirstName());
-            Log.d("main", admin.getLastName());
-        }
-        catch (Exception exception)
-        {
-            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ",exception.getMessage());
-        }
-    }
-
-
     // Add Products
     public void addProducts() {
         // Initialize ContentValues object with the new customer
@@ -307,23 +245,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Test function to Retrieve Product
-    public void testRetrieveProduct()
-    {
-        try {
-            Product product = productManager.getProductById("1" , "productId");
-            Log.d("main", Integer.toString(product.getProductId()));
-            Log.d("main", product.getProductName());
-            Log.d("main", Double.toString(product.getPrice()));
-            Log.d("main", Integer.toString(product.getQuantity()));
-            Log.d("main", product.getCategory());
-        }
-        catch (Exception exception)
-        {
-            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ",exception.getMessage());
-        }
-    }
 
     // Test function to Retrieve all products
     public Product[] testRetrieveAllProducts() {
