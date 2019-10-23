@@ -71,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Error: ", exception.getMessage());
         }
 
-        // Test Customer Field in DB
-        boolean checkCustomer = false;
-
+        // To delete all
         //boolean checkDeleteCustomer = customerManager.deleteAll();
 
         // Add to the DB
