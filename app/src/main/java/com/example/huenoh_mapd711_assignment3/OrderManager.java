@@ -78,6 +78,41 @@ public class OrderManager extends OnlinePurchasingDBManager {
     }
 
 
-    // TODO : getAllOrders -> refer getAllProducts()
+    /**
+     * This method returns all the orders in the DB
+     * @return Orders as an array
+     * @throws Exception
+     */
+    public Order[] getAllOrders() throws  Exception{
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( "select * from " + TABLE_NAME, null );
+
+        // Get number of rows
+        final int cnt = cursor.getCount();
+
+        // Get all products
+        Order[] orders = new Order[cnt];
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            for (int i = 0; i < cnt; ++i) {
+                Order order = new Order(
+                        cursor.getInt(0)
+                        , cursor.getInt(1)
+                        , cursor.getInt(2)
+                        , cursor.getInt(3)
+                        , cursor.getString(4)
+                        , cursor.getString(5));
+                orders[i] = order;
+                cursor.moveToNext();
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return orders;
+    }
+
+
+    // TODO : add placeAnOrder()
 
 }
