@@ -154,7 +154,7 @@ public class OnlinePurchasingDBManager extends SQLiteOpenHelper {
     /**
      * This method deletes all records in a table and return status
      * @param strTableName TableName of the records
-     * @return             The number of rows affected
+     * @return             True if it succeeded, False otherwise
      * @throws Exception
      */
     public boolean deleteAllRows(String strTableName) throws Exception {
