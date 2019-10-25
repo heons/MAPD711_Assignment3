@@ -18,19 +18,27 @@ public class OrderManager extends OnlinePurchasingDBManager {
             + " (orderId integer primary key, customerId integer, productId integer" +
             ", employeeId integer, orderDate text, status text);";
 
+    /**
+     * Initializer
+     * @param context Context to work on
+     */
     public OrderManager(Context context) {
         super(context);
         super.dbInitialize(TABLE_NAME, TABLE_CREATE_STRING);
     }
 
-    // This method returns a student object which holds the table row with the given id
-    // The following argument should be passed:
-    // id - an Object which holds the primary key value
-    // fieldName - the  name of the primary key field
-    public Order getOrderById(Object id, String fieldName) throws  Exception{
+    /**
+     * This method returns a order object which holds the table row with the given id
+     * @param id           Order's ID or a value of the FieldName
+     * @param strFieldName FieldName of a order record
+     * @return             Order object or a null
+     * @throws Exception
+     */
+    public Order getOrderById(Object id, String strFieldName) throws  Exception{
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery( "select * from " + TABLE_NAME + " where "+ fieldName + "='"+String.valueOf(id)+"'", null );
+        Cursor cursor = db.rawQuery( "select * from " + TABLE_NAME + " where "+ strFieldName + "='"+String.valueOf(id)+"'", null );
         Order order = new Order(); //create a new Student object
+
         if (cursor.moveToFirst()) { //if row exists
             cursor.moveToFirst(); //move to first row
             //initialize the instance variables of order object
@@ -50,9 +58,14 @@ public class OrderManager extends OnlinePurchasingDBManager {
         return order;
     }
 
-
-    // Get orders by values
-    // It may include  getOrdersById, getOrdersByStatus, getOrdersEditable
+    /**
+     * This method returns orders by fieldName and it's value
+     * It may can be used in getOrdersByCustomerId, getOrdersByStatus, getOrdersEditable
+     * @param value     
+     * @param fieldName
+     * @return
+     * @throws Exception
+     */
     public Order[] getOrdersByValue(Object value, String fieldName) throws  Exception{
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery( "select * from " + TABLE_NAME + " where "+ fieldName + "='"+String.valueOf(value)+"'", null );
