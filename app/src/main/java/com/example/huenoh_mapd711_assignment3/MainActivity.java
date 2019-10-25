@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
         if (radioButtonValue == 0) { // Admin
 
             if (loginAdmin(userName, userPassword)) {
-                System.out.println("successful login admin");
-
+                //System.out.println("successful login admin");
+                isOK = true;
                 // Move to AdminOrderList activity.
                 Intent intent = new Intent(MainActivity. this,AdminOrdersList.class);
                 startActivity(intent);
@@ -133,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
         } else { // Customer
 
             if (loginCustomer(userName, userPassword)) {
-                System.out.println("successful login users");
+                //System.out.println("successful login users");
+                isOK = true;
 
                 // Move to ShoppingActivity activity
                 Intent intent = new Intent(MainActivity.this, ShoppingActivity.class);
