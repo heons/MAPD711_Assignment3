@@ -20,17 +20,10 @@ public class ShoppingActivity extends AppCompatActivity {
 
 
     ProductManager productManager = new ProductManager(this);
-    Product product = new Product();
-//    final ListView listView;
-    ListView listView;
+    Product[] products;
+    String[] strProductsList;
 
-    String[] courses = {
-            "iOS",
-            "Samsung",
-            "Flutter",
-            "Angular",
-            "angad",
-    };
+    ListView listView;
 
 
     @Override
@@ -38,13 +31,31 @@ public class ShoppingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping);
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_dropdown_item_1line,courses);
+
+        // Get all the products from the database.
+        try {
+            this.products = productManager.getAllProducts();
+        }
+        catch (Exception exception)
+        {
+            Log.i("Error: ",exception.getMessage());
+        }
 
 
+        // Update strings for the list adapter
+        strProductsList = new String[products.length];
+        for (int i = 0; i < products.length; ++i) {
+            strProductsList[i] = products[i].getProductName() + "(Quantity : " + products[i].getQuantity() + ")";
+        }
+
+        // Create array adapter for the list view
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, strProductsList);
+
+        // Get list view for the products and set the adapter.
         listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-
+        // Set the listener.
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -55,29 +66,13 @@ public class ShoppingActivity extends AppCompatActivity {
                 String x = adapter.getItem(i);
                 System.out.println(x);
 
-                Intent intent = new Intent(ShoppingActivity.this,ProductInformation.class);
+                Intent intent = new Intent(ShoppingActivity. this,ProductInformation.class);
                 intent.putExtra("itemName",x);
                 startActivity(intent);
 
             }
         });
 
-
-        try {
-            Product[] products = productManager.getAllProducts();
-            Log.d("","");
-
-
-            System.out.println("products are");
-            System.out.println(products);
-
-
-//            String x = products.
-        }
-        catch (Exception exception)
-        {
-            Log.i("Error: ",exception.getMessage());
-        }
     }
 
 

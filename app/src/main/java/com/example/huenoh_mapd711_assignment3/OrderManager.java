@@ -3,9 +3,14 @@ package com.example.huenoh_mapd711_assignment3;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 
 public class OrderManager extends OnlinePurchasingDBManager {
+
+    // TAG for the log
+    private static final String TAG = "OrderManager";
+
     // table name and table creator string (SQL statement to create the table)
     // should be set from within main activity
     public static final String TABLE_NAME = "Orders";
@@ -77,6 +82,19 @@ public class OrderManager extends OnlinePurchasingDBManager {
         return orders;
     }
 
+    /**
+     * This method returns all the orders in the DB by a Customer ID
+     * @param customerId Customer ID
+     * @return Orders as an array
+     */
+    public Order[] getOrdersByCustomerId(int customerId) {
+        try {
+            return getOrdersByValue(customerId, "customerId");
+        } catch (Exception exception) {
+            Log.i(this.TAG + "Error: ", exception.getMessage());
+        }
+        return null;
+    }
 
     /**
      * This method returns all the orders in the DB
