@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Get views
         editTextName = findViewById(R.id.editTextName);
         editTextPassword = findViewById(R.id.editTextPassword);
         loginButton = findViewById(R.id.loginButton);
@@ -41,20 +42,17 @@ public class MainActivity extends AppCompatActivity {
         radioButtonUsers = findViewById(R.id.radioUsers);
 
 
-
-
+        // Set listener for the radio buttons
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGrp);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rb1 = (RadioButton) findViewById(R.id.radioAdmin);
                 if(rb1.isChecked()){
-                    //printToast("Yes, checked!");
                     radioButtonValue = 0;
                     Toast.makeText(getApplicationContext(),"Yes", Toast.LENGTH_LONG).show();
                 } else {
                     radioButtonValue = 1;
-//                    printToast("No checked!");
                 }
             }
         });
@@ -125,13 +123,9 @@ public class MainActivity extends AppCompatActivity {
         if (radioButtonValue == 0) { // Admin
 
             if (loginAdmin(userName, userPassword)) {
-                System.out.println("successfull login admin");
+                System.out.println("successful login admin");
 
-                SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
-                SharedPreferences.Editor prefEditor = preferences.edit();
-                prefEditor.putString("name", userName);
-                prefEditor.commit();
-
+                // Move to AdminOrderList activity.
                 Intent intent = new Intent(MainActivity. this,AdminOrdersList.class);
                 startActivity(intent);
             }
@@ -139,13 +133,9 @@ public class MainActivity extends AppCompatActivity {
         } else { // Customer
 
             if (loginCustomer(userName, userPassword)) {
-                System.out.println("successfull login users");
+                System.out.println("successful login users");
 
-                SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
-                SharedPreferences.Editor prefEditor = preferences.edit();
-                prefEditor.putString("name", userName);
-                prefEditor.commit();
-
+                // Move to ShoppingActivity activity
                 Intent intent = new Intent(MainActivity.this, ShoppingActivity.class);
                 startActivity(intent);
             }
@@ -173,6 +163,13 @@ public class MainActivity extends AppCompatActivity {
                 if(customer.getPassword().equals(strPassword)) {
                     rc = true;
 
+                    // Set shared preferences
+                    SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
+                    SharedPreferences.Editor prefEditor = preferences.edit();
+                    prefEditor.putString("CustomerName", customer.getUserName());
+                    prefEditor.putString("UserType", "customer");
+                    prefEditor.putInt("UserId", customer.getCustomerId());
+                    prefEditor.commit();
                 } else {}
             } else {}
         }
@@ -200,6 +197,14 @@ public class MainActivity extends AppCompatActivity {
             if (null != admin) {
                 if(admin.getPassword().equals(strPassword)) {
                     rc = true;
+
+                    // Set shared preferences
+                    SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
+                    SharedPreferences.Editor prefEditor = preferences.edit();
+                    prefEditor.putString("AdminName", admin.getUserName());
+                    prefEditor.putString("UserType", "admin");
+                    prefEditor.putInt("UserId", admin.getEmployeeId());
+                    prefEditor.commit();
                 } else {}
             } else {}
         }
