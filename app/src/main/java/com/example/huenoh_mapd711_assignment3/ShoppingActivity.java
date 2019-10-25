@@ -87,22 +87,6 @@ public class ShoppingActivity extends AppCompatActivity {
         return true;
     }
 
-//    public boolean onOptionsItemSelected(MenuItem menuItem){
-//
-//        switch(menuItem.getItemId()){
-//            case R.id.profile:
-//                Toast.makeText(getApplicationContext(),"hello selected",Toast.LENGTH_LONG);
-//
-//                break;
-//
-//            case R.id.orders:
-//                Toast.makeText(getApplicationContext(),"close selected",Toast.LENGTH_LONG);
-//                break;
-//        }
-//
-//        return true;
-//
-  //  }
 
     public boolean onOptionsItemSelected(MenuItem menuItem){
 
