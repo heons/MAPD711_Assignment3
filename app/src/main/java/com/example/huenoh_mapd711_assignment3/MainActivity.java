@@ -107,18 +107,24 @@ public class MainActivity extends AppCompatActivity {
         addCustomer(); // Add a customer
         addAdmin();    // Add an admin
         addProducts(); // Add products
-
     }
 
 
-
-    public void onClickLoginButton(View view){
+    /**
+     * This method is called when Login button is clicked.
+     * @param view
+     */
+    public void onClickLoginButton(View view) {
 
         String userName = editTextName.getText().toString();
         String userPassword = editTextPassword.getText().toString();
 
-        if (radioButtonValue == 0){
-             loginAdmin(userName,userPassword);
+        boolean isOK = false;
+
+
+        if (radioButtonValue == 0) { // Admin
+
+            if (loginAdmin(userName, userPassword)) {
                 System.out.println("successfull login admin");
 
                 SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
@@ -126,22 +132,27 @@ public class MainActivity extends AppCompatActivity {
                 prefEditor.putString("name", userName);
                 prefEditor.commit();
 
-            Intent intent = new Intent(MainActivity.this,AdminOrdersList.class);
-            startActivity(intent);
+                Intent intent = new Intent(MainActivity. this,AdminOrdersList.class);
+                startActivity(intent);
+            }
 
+        } else { // Customer
 
-        }else{
+            if (loginCustomer(userName, userPassword)) {
+                System.out.println("successfull login users");
 
-            loginCustomer(userName,userPassword);
-            SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
-            SharedPreferences.Editor prefEditor = preferences.edit();
-            prefEditor.putString("name", userName);
-            prefEditor.commit();
+                SharedPreferences preferences = getSharedPreferences("MyPreferences", 0);
+                SharedPreferences.Editor prefEditor = preferences.edit();
+                prefEditor.putString("name", userName);
+                prefEditor.commit();
 
-            Intent intent = new Intent(MainActivity.this,ShoppingActivity.class);
-            startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, ShoppingActivity.class);
+                startActivity(intent);
+            }
+        }
 
-            System.out.println("successfull login users");
+        if (!isOK) {
+            Toast.makeText(MainActivity.this, "Please check the usernmae and password", Toast.LENGTH_SHORT).show();
         }
     }
 
