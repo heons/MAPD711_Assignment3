@@ -6,6 +6,8 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -76,8 +78,45 @@ public class ShoppingActivity extends AppCompatActivity {
         {
             Log.i("Error: ",exception.getMessage());
         }
-
-
-
     }
+
+
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+//    public boolean onOptionsItemSelected(MenuItem menuItem){
+//
+//        switch(menuItem.getItemId()){
+//            case R.id.profile:
+//                Toast.makeText(getApplicationContext(),"hello selected",Toast.LENGTH_LONG);
+//
+//                break;
+//
+//            case R.id.orders:
+//                Toast.makeText(getApplicationContext(),"close selected",Toast.LENGTH_LONG);
+//                break;
+//        }
+//
+//        return true;
+//
+  //  }
+
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+
+        switch (menuItem.getItemId()){
+            case R.id.profileItem:
+                Toast.makeText(getApplicationContext(),"profileItem selected",Toast.LENGTH_LONG);
+                break;
+            case R.id.ordersItem:
+                Toast.makeText(getApplicationContext(),"ordersItem selected",Toast.LENGTH_LONG);
+                break;
+        }
+
+        return true;
+    }
+
+
 }
