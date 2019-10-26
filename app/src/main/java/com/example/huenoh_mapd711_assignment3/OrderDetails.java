@@ -49,7 +49,11 @@ public class OrderDetails extends AppCompatActivity {
         m_product = (Product) intent.getSerializableExtra("classProduct");
         m_quantity = intent.getIntExtra("quantity", 1);
 
-        userName.setText("Angad");
+        // Update user information
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
+        userName.setText(pref.getString("CustomerName",""));
+
+        // TODO : add them to the DB
         userPhone.setText("+1 2223234565");
         userEmail.setText("Angad@gmail.com");
         userAddress.setText("Ellesmere Road");
@@ -77,9 +81,7 @@ public class OrderDetails extends AppCompatActivity {
         int customerID = pref.getInt("UserId", -1); // getting Integer
         if (customerID != -1) {
 
-            // Add an order to the DB
-            OrderManager orderManager = new OrderManager(this);
-            // Initialize ContentValues object with the ne order
+            // Initialize ContentValues object with the new order
             ContentValues contentValues = new ContentValues();
             this.m_orderId++;
             contentValues.put("orderId", this.m_orderId);
@@ -89,7 +91,9 @@ public class OrderDetails extends AppCompatActivity {
             contentValues.put("quantity", m_quantity);
             contentValues.put("orderDate", ""); //TODO : do something
             contentValues.put("status", getString(R.string.status_inProgress));
-            
+
+            // Add an order to the DB
+            OrderManager orderManager = new OrderManager(this);
             try {
                 orderManager.addRow(contentValues, OrderManager.TABLE_NAME);
             } catch (Exception exception) {
@@ -97,11 +101,12 @@ public class OrderDetails extends AppCompatActivity {
             }
 
 
-            // Update product quantity.
-            ProductManager productManager = new ProductManager(this);
+            // Initialize ContentValues object for the edit
             contentValues = new ContentValues();
             contentValues.put("quantity", m_product.getQuantity() - m_quantity);
 
+            // Update product quantity.
+            ProductManager productManager = new ProductManager(this);
             try {
                 productManager.editRow(m_product.getProductId(), "productId", contentValues, ProductManager.TABLE_NAME);
             } catch (Exception exception) {
