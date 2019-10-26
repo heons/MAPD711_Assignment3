@@ -1,6 +1,8 @@
 package com.example.huenoh_mapd711_assignment3;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private int productId;
     private String productName;
     private double price;
@@ -60,5 +62,11 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    // To send the object between activities.
+    public static class ProductChild implements Serializable {
+
+        public ProductChild() {}
     }
 }
