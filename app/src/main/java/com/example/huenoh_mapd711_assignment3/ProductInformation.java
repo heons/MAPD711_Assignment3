@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProductInformation extends AppCompatActivity {
 
@@ -43,9 +44,9 @@ public class ProductInformation extends AppCompatActivity {
         productPrice.setText(Double.toString(m_product.getPrice()));
 
         // Create array for spinner : Quantity selection for the product.
-        arraySpinner = new String[m_product.getQuantity()];
-        for (int i = 0; i < m_product.getQuantity(); ++i) {
-            arraySpinner[i] = Integer.toString(i+1);
+        arraySpinner = new String[m_product.getQuantity() + 1];
+        for (int i = 0; i < m_product.getQuantity() + 1; ++i) {
+            arraySpinner[i] = Integer.toString(i);
         }
 
         // Set Spinner with adapter
@@ -58,12 +59,21 @@ public class ProductInformation extends AppCompatActivity {
 
     public void onClickButton(View view){
 
-        // Send product information and quantity to order detail.
-        // TODO : need to check quantity of the product and reserve it in DB.
-        Intent intent = new Intent(ProductInformation.this,OrderDetails.class);
-        intent.putExtra("classProduct", m_product);
-        intent.putExtra("quantity", (int)(quantitySpinner.getSelectedItemId()+1));
-        startActivity(intent);
+        // Check selected quantity.
+        int selQuantity = (int)(quantitySpinner.getSelectedItemId());
+        if(selQuantity != 0) {
+            // Send product information and quantity to order detail.
+            // TODO : need to check quantity of the product and reserve it in DB.
+            Intent intent = new Intent(ProductInformation.this, OrderDetails.class);
+            intent.putExtra("classProduct", m_product);
+            intent.putExtra("quantity", selQuantity);
+            startActivity(intent);
+
+        } else {
+            //TODO : use string.xml for the message
+            Toast.makeText(this, "select product quantity", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
