@@ -2,8 +2,12 @@ package com.example.huenoh_mapd711_assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -42,4 +46,23 @@ public class ProductsStatusActivity extends AppCompatActivity {
         }
 
     }
+
+
+    public void onClickBtnUpdate(View view){
+
+        // Update the order
+        OrderManager orderManager = new OrderManager(this);
+        // Initialize ContentValues for the order
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("status", spinner.getSelectedItem().toString());
+
+        try {
+
+            orderManager.editRow(m_order.getOrderId(), "orderId", contentValues, OrderManager.TABLE_NAME);
+        } catch (Exception exception) {
+            Log.i("Error: ", exception.getMessage());
+        }
+    }
+
+
 }

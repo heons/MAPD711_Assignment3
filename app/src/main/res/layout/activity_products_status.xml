@@ -29,10 +29,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update"
-        android:textSize="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:onClick="onClickBtnUpdate"
+        android:text="Update"
+        android:textSize="20dp" />
 
 
 </LinearLayout>
