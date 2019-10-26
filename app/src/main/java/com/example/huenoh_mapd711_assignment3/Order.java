@@ -7,17 +7,19 @@ public class Order implements Serializable {
     private int customerId;
     private int productId;
     private int employeeId;
+    private int quantity;
     private String orderDate;
     private String status;
 
     public Order() {
     }
 
-    public Order(int orderId, int customerId, int productId, int employeeId, String orderDate, String status) {
+    public Order(int orderId, int customerId, int productId, int employeeId, int quantity, String orderDate, String status) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.productId = productId;
         this.employeeId = employeeId;
+        this.quantity = quantity;
         this.orderDate = orderDate;
         this.status = status;
     }
@@ -38,6 +40,8 @@ public class Order implements Serializable {
     public int getEmployeeId() {
         return employeeId;
     }
+
+    public int getQuantity() { return quantity; }
 
     public String getOrderDate() {
         return orderDate;
@@ -63,6 +67,8 @@ public class Order implements Serializable {
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
+
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;

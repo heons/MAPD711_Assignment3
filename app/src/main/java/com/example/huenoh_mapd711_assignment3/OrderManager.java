@@ -16,7 +16,7 @@ public class OrderManager extends OnlinePurchasingDBManager {
     public static final String TABLE_NAME = "Orders";
     public static final String TABLE_CREATE_STRING = "CREATE TABLE "+ TABLE_NAME
             + " (orderId integer primary key, customerId integer, productId integer" +
-            ", employeeId integer, orderDate text, status text);";
+            ", employeeId integer, quantity integer, orderDate text, status text);";
 
     /**
      * Initializer
@@ -46,8 +46,9 @@ public class OrderManager extends OnlinePurchasingDBManager {
             order.setCustomerId(cursor.getInt(1));
             order.setProductId(cursor.getInt(2));
             order.setEmployeeId(cursor.getInt(3));
-            order.setOrderDate(cursor.getString(4));
-            order.setStatus(cursor.getString(5));
+            order.setQuantity(cursor.getInt(4));
+            order.setOrderDate(cursor.getString(5));
+            order.setStatus(cursor.getString(6));
             cursor.close();
 
         } else {
@@ -83,8 +84,9 @@ public class OrderManager extends OnlinePurchasingDBManager {
                         , cursor.getInt(1)
                         , cursor.getInt(2)
                         , cursor.getInt(3)
-                        , cursor.getString(4)
-                        , cursor.getString(5));
+                        , cursor.getInt(4)
+                        , cursor.getString(5)
+                        , cursor.getString(6));
                 orders[i] = order;
                 cursor.moveToNext();
             }
@@ -131,8 +133,9 @@ public class OrderManager extends OnlinePurchasingDBManager {
                         , cursor.getInt(1)
                         , cursor.getInt(2)
                         , cursor.getInt(3)
-                        , cursor.getString(4)
-                        , cursor.getString(5));
+                        , cursor.getInt(4)
+                        , cursor.getString(5)
+                        , cursor.getString(6));
                 orders[i] = order;
                 cursor.moveToNext();
             }

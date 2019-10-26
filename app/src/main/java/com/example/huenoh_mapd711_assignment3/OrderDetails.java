@@ -13,15 +13,17 @@ import android.widget.Toast;
 
 public class OrderDetails extends AppCompatActivity {
 
-    private static int orderId = 0;
+    /* Member variables */
+    // OrderIDs - will be increased automatically.
+    private static int m_orderId = 0;
 
+    // Views
     TextView userName,userPhone,userEmail,userAddress,userCity,userPostalCode;
     TextView productName,productPrice,productQuantity,productCategory;
 
-
     // Product information from previous activity
-    Product m_product;
-    int m_quantity;
+    private Product m_product;
+    private int m_quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,15 +62,15 @@ public class OrderDetails extends AppCompatActivity {
                         + Double.toString(m_product.getPrice() * m_quantity));
         productQuantity.setText(Integer.toString(m_quantity));
         productCategory.setText(m_product.getCategory());
-
     }
 
 
-
+    /**
+     * This method is for the click action of the Confirm Order button
+     * It creates an order and save it to the DB
+     * @param view Confirm Order button
+     */
     public void onClickBtnConfirmOrder(View view){
-
-        // Create an order and save it to the DB
-
 
         // Get shared preference for customerId
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
@@ -79,13 +81,14 @@ public class OrderDetails extends AppCompatActivity {
             OrderManager orderManager = new OrderManager(this);
             // Initialize ContentValues object with the ne order
             ContentValues contentValues = new ContentValues();
-            contentValues.put("orderId", this.orderId);
+            this.m_orderId++;
+            contentValues.put("orderId", this.m_orderId);
             contentValues.put("customerId", customerID);
             contentValues.put("productId", m_product.getProductId());
             contentValues.put("employeeId", 1); //TODO : do something
+            contentValues.put("quantity", m_quantity);
             contentValues.put("orderDate", ""); //TODO : do something
             contentValues.put("status", getString(R.string.status_inProgress));
-            //TODO : add quantity columns
             
             try {
                 orderManager.addRow(contentValues, OrderManager.TABLE_NAME);
@@ -106,8 +109,6 @@ public class OrderDetails extends AppCompatActivity {
             }
         }
     }
-
-
 
 
 }
