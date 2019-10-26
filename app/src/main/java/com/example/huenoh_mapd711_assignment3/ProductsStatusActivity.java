@@ -57,11 +57,13 @@ public class ProductsStatusActivity extends AppCompatActivity {
         contentValues.put("status", spinner.getSelectedItem().toString());
 
         try {
-
             orderManager.editRow(m_order.getOrderId(), "orderId", contentValues, OrderManager.TABLE_NAME);
         } catch (Exception exception) {
             Log.i("Error: ", exception.getMessage());
         }
+
+        // Go back to previous activity.
+        finish();
     }
 
 
