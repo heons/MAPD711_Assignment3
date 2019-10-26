@@ -34,7 +34,7 @@ public class ProductInformation extends AppCompatActivity {
 
         // Get product from previous activity.
         Intent intent = getIntent();
-        m_product = (Product) intent.getSerializableExtra("classProduct");;
+        m_product = (Product) intent.getSerializableExtra("classProduct");
 
         // Set product information
         productName.setText(m_product.getProductName());
@@ -57,10 +57,12 @@ public class ProductInformation extends AppCompatActivity {
 
 
     public void onClickButton(View view){
-        // TODO : Create an order and put it to the db.
 
-        
+        // Send product information and quantity to order detail.
+        // TODO : need to check quantity of the product and reserve it in DB.
         Intent intent = new Intent(ProductInformation.this,OrderDetails.class);
+        intent.putExtra("classProduct", m_product);
+        intent.putExtra("quantity", (int)(quantitySpinner.getSelectedItemId()+1));
         startActivity(intent);
     }
 

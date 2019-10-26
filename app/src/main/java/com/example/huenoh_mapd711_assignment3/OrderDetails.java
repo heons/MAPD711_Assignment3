@@ -2,6 +2,7 @@ package com.example.huenoh_mapd711_assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -11,6 +12,10 @@ public class OrderDetails extends AppCompatActivity {
     TextView userName,userPhone,userEmail,userAddress,userCity,userPostalCode;
     TextView productName,productPrice,productQuantity,productCategory;
 
+
+    // Product information from previous activity
+    Product m_product;
+    int m_quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,11 @@ public class OrderDetails extends AppCompatActivity {
         productCategory = findViewById(R.id.productCategory);
 
 
+        // Get product from previous activity.
+        Intent intent = getIntent();
+        m_product = (Product) intent.getSerializableExtra("classProduct");
+        m_quantity = intent.getIntExtra("quantity", 1);
+
         userName.setText("Angad");
         userPhone.setText("+1 2223234565");
         userEmail.setText("Angad@gmail.com");
@@ -38,10 +48,12 @@ public class OrderDetails extends AppCompatActivity {
         userCity.setText("Scarborough");
         userPostalCode.setText("M1R3R7");
 
-        productName.setText("iPhone");
-        productPrice.setText("$800");
-        productQuantity.setText("1");
-        productCategory.setText("Electronics");
+        productName.setText(m_product.getProductName());
+        productPrice.setText(
+                Double.toString(m_product.getPrice()) + " * " + Integer.toString(m_quantity) + " = "
+                        + Double.toString(m_product.getPrice() * m_quantity));
+        productQuantity.setText(Integer.toString(m_quantity));
+        productCategory.setText(m_product.getCategory());
 
 
     }
