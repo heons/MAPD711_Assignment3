@@ -69,11 +69,13 @@ public class ProductInformation extends AppCompatActivity {
             intent.putExtra("quantity", selQuantity);
             startActivity(intent);
 
+            // Done. Go back to previous page.
+            finish();
+
         } else {
             //TODO : use string.xml for the message
             Toast.makeText(this, "select product quantity", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 

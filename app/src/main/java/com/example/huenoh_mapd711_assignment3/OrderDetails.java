@@ -119,6 +119,8 @@ public class OrderDetails extends AppCompatActivity {
                 Log.i("Error: ", exception.getMessage());
             }
 
+            // Done. Go back to previous page.
+            finish();
         }
     }
 
