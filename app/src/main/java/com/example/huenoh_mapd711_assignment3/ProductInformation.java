@@ -11,14 +11,14 @@ import android.widget.TextView;
 
 public class ProductInformation extends AppCompatActivity {
 
-
+    // View Object
     TextView productName,productDescription,productPrice;
     Spinner quantitySpinner;
-    String[] arraySpinner = new String[] {
-            "1", "2", "3", "4", "5", "6", "7"
-    };
 
+    // Array for a spinner
+    String[] arraySpinner;
 
+    // Product information from previous activity
     Product m_product;
 
     @Override
@@ -31,22 +31,28 @@ public class ProductInformation extends AppCompatActivity {
         productPrice = findViewById(R.id.itemPrice);
         quantitySpinner = findViewById(R.id.quantitySpinner);
 
-//        quantitySpinner.ad
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        quantitySpinner.setAdapter(adapter);
-
 
         // Get product from previous activity.
         Intent intent = getIntent();
         m_product = (Product) intent.getSerializableExtra("classProduct");;
 
+        // Set product information
         productName.setText(m_product.getProductName());
+        // TODO : add description to the database and use it.
         productDescription.setText("The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system (OS), and as of 2017, there were 2.2 million apps available for it through the Apple App Store, according to Statista.");
         productPrice.setText(Double.toString(m_product.getPrice()));
 
+        // Create array for spinner : Quantity selection for the product.
+        arraySpinner = new String[m_product.getQuantity()];
+        for (int i = 0; i < m_product.getQuantity(); ++i) {
+            arraySpinner[i] = Integer.toString(i+1);
+        }
+
+        // Set Spinner with adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arraySpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        quantitySpinner.setAdapter(adapter);
     }
 
 
