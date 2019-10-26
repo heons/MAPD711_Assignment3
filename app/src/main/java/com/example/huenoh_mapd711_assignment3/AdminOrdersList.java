@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,13 +16,9 @@ public class AdminOrdersList extends AppCompatActivity {
 
     ListView listView;
 
-    String[] list = {
-            "Iphone 8",
-            "Samsung Microwave",
-            "Rice",
-            "Laptop",
-            "Wooden Table",
-    };
+    ProductManager productManager = new ProductManager(this);
+    Product[] products;
+    String[] strProductsList;
 
 
     @Override
@@ -29,13 +26,32 @@ public class AdminOrdersList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_orders_list);
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_dropdown_item_1line,list);
+
+        // Get all the products from the database.
+        try {
+            this.products = productManager.getAllProducts();
+        }
+        catch (Exception exception)
+        {
+            Log.i("Error: ",exception.getMessage());
+        }
 
 
+        // Update strings for the list adapter
+        strProductsList = new String[products.length];
+        for (int i = 0; i < products.length; ++i) {
+            strProductsList[i] = products[i].getProductName() + "(Quantity : " + products[i].getQuantity() + ")";
+        }
+
+        // Create array adapter for the list view
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, strProductsList);
+
+
+        // Get list view for the products and set the adapter.
         listView = findViewById(R.id.ordersList);
         listView.setAdapter(adapter);
 
-
+        // Set the listener.
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -46,9 +62,13 @@ public class AdminOrdersList extends AppCompatActivity {
                 String x = adapter.getItem(i);
                 System.out.println(x);
 
+                Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
+                startActivity(intent);
 
             }
         });
+
+
 
     }
 }
