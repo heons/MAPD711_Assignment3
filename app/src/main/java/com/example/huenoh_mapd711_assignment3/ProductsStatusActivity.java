@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +12,17 @@ import android.widget.Spinner;
 
 public class ProductsStatusActivity extends AppCompatActivity {
 
-    Spinner spinner;
-    String[] arraySpinner = new String[] {
-            "In-Process","Delivery"
+    /* Member variables */
+    // Array for status spinner
+    private static final String[] m_arrSpinnerStatus = new String[] {
+            "In-Process", "Delivery"
     };
+
+    // Spinner for the status
+    private Spinner m_spinnerStatus;
+
     // Product information from previous activity
-    Order m_order;
+    private Order m_order;
 
 
     @Override
@@ -27,35 +31,40 @@ public class ProductsStatusActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_status);
 
         // Get views
-        spinner = findViewById(R.id.statusSpinner);
+        m_spinnerStatus = findViewById(R.id.statusSpinner);
 
         // Get product from previous activity.
         Intent intent = getIntent();
         m_order = (Order) intent.getSerializableExtra("classOrder");
 
-        // Set spinner
+        // Set status spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
+                android.R.layout.simple_spinner_item, m_arrSpinnerStatus);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        m_spinnerStatus.setAdapter(adapter);
 
         if ( m_order.getStatus().equals(getString(R.string.status_inProgress)) ) {
-            spinner.setSelection(0);
+            m_spinnerStatus.setSelection(0);
         } else {
-            spinner.setSelection(1);
+            m_spinnerStatus.setSelection(1);
         }
 
+        //TODO : angard - display other order information as well
     }
 
 
+    /**
+     * This method is for the click action of the update button
+     * @param view update button
+     */
     public void onClickBtnUpdate(View view){
+
+        // Initialize ContentValues for the order
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("status", m_spinnerStatus.getSelectedItem().toString());
 
         // Update the order
         OrderManager orderManager = new OrderManager(this);
-        // Initialize ContentValues for the order
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("status", spinner.getSelectedItem().toString());
-
         try {
             orderManager.editRow(m_order.getOrderId(), "orderId", contentValues, OrderManager.TABLE_NAME);
         } catch (Exception exception) {
