@@ -1,6 +1,8 @@
 package com.example.huenoh_mapd711_assignment3;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable {
     private int orderId;
     private int customerId;
     private int productId;
@@ -68,5 +70,11 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    // To send the object between activities.
+    public static class OrderChild implements Serializable {
+
+        public OrderChild() {}
     }
 }
