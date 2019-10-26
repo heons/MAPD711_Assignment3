@@ -2,12 +2,18 @@ package com.example.huenoh_mapd711_assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class OrderDetails extends AppCompatActivity {
 
+    private static int orderId = 0;
 
     TextView userName,userPhone,userEmail,userAddress,userCity,userPostalCode;
     TextView productName,productPrice,productQuantity,productCategory;
@@ -55,11 +61,51 @@ public class OrderDetails extends AppCompatActivity {
         productQuantity.setText(Integer.toString(m_quantity));
         productCategory.setText(m_product.getCategory());
 
-
     }
 
 
 
+    public void onClickBtnConfirmOrder(View view){
+
+        // Create an order and save it to the DB
+
+
+        // Get shared preference for customerId
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
+        int customerID = pref.getInt("UserId", -1); // getting Integer
+        if (customerID != -1) {
+
+            // Add an order to the DB
+            OrderManager orderManager = new OrderManager(this);
+            // Initialize ContentValues object with the ne order
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("orderId", this.orderId);
+            contentValues.put("customerId", customerID);
+            contentValues.put("productId", m_product.getProductId());
+            contentValues.put("employeeId", 1); //TODO : do something
+            contentValues.put("orderDate", ""); //TODO : do something
+            contentValues.put("status", getString(R.string.status_inProgress));
+            //TODO : add quantity columns
+            
+            try {
+                orderManager.addRow(contentValues, OrderManager.TABLE_NAME);
+            } catch (Exception exception) {
+                Log.i("Error: ", exception.getMessage());
+            }
+
+
+            // Update product quantity.
+            ProductManager productManager = new ProductManager(this);
+            contentValues = new ContentValues();
+            contentValues.put("quantity", m_product.getQuantity() - m_quantity);
+
+            try {
+                productManager.editRow(m_product.getProductId(), "productId", contentValues, ProductManager.TABLE_NAME);
+            } catch (Exception exception) {
+                Log.i("Error: ", exception.getMessage());
+            }
+        }
+    }
 
 
 
