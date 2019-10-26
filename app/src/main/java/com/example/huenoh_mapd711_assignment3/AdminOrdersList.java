@@ -16,9 +16,9 @@ public class AdminOrdersList extends AppCompatActivity {
 
     ListView listView;
 
-    ProductManager productManager = new ProductManager(this);
-    Product[] products;
-    String[] strProductsList;
+    OrderManager orderManager = new OrderManager(this);
+    Order[] orders;
+    String[] strOrdersList;
 
 
     @Override
@@ -29,7 +29,7 @@ public class AdminOrdersList extends AppCompatActivity {
 
         // Get all the products from the database.
         try {
-            this.products = productManager.getAllProducts();
+            this.orders = orderManager.getAllOrders();
         }
         catch (Exception exception)
         {
@@ -38,13 +38,13 @@ public class AdminOrdersList extends AppCompatActivity {
 
 
         // Update strings for the list adapter
-        strProductsList = new String[products.length];
-        for (int i = 0; i < products.length; ++i) {
-            strProductsList[i] = products[i].getProductName() + "(Quantity : " + products[i].getQuantity() + ")";
+        strOrdersList = new String[orders.length];
+        for (int i = 0; i < orders.length; ++i) {
+            strOrdersList[i] = orders[i].getOrderDate() + "(Status : " + orders[i].getStatus() + ")";
         }
 
         // Create array adapter for the list view
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, strProductsList);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, strOrdersList);
 
 
         // Get list view for the products and set the adapter.
