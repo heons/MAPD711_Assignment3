@@ -9,17 +9,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class AdminOrdersList extends AppCompatActivity {
 
-    private static Order m_order = new Order();
+    /* Member variables */
+    private ListView m_listViewOrders; // List view for orders
 
-    ListView listView;
-
-    OrderManager orderManager = new OrderManager(this);
-    Order[] orders;
-    String[] strOrdersList;
+    private Order[]  m_orders;         // Array for orders
+    private String[] m_strOrdersList;  // Array for orders' display strings
 
 
     @Override
@@ -27,50 +24,63 @@ public class AdminOrdersList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_orders_list);
 
+        // Get order list view
+        m_listViewOrders = findViewById(R.id.ordersList);
+
+        // Update the order list view
+        updateOrderList();
+
+        // Set the listener for the order list view.
+        m_listViewOrders.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                // Move to ProductsStatusActivity activity
+                Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
+                intent.putExtra("classOrder", m_orders[i]);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+    /**
+     * onResume operation.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Update the order list view
+        updateOrderList();
+    }
+
+    /**
+     * Update the order list view by loading data from the DB
+     */
+    private void updateOrderList() {
+        // Order Manager
+        OrderManager orderManager = new OrderManager(this);
 
         // Get all the products from the database.
         try {
-            this.orders = orderManager.getAllOrders();
+            m_orders = orderManager.getAllOrders();
         }
         catch (Exception exception)
         {
             Log.i("Error: ",exception.getMessage());
         }
 
-
         // Update strings for the list adapter
-        strOrdersList = new String[orders.length];
-        for (int i = 0; i < orders.length; ++i) {
-            strOrdersList[i] = orders[i].getOrderDate() + "(Status : " + orders[i].getStatus() + ")";
+        m_strOrdersList = new String[m_orders.length];
+        for (int i = 0; i < m_orders.length; ++i) {
+            m_strOrdersList[i] = m_orders[i].getOrderDate() + "(Status : " + m_orders[i].getStatus() + ")";
         }
 
         // Create array adapter for the list view
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, strOrdersList);
-
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, m_strOrdersList);
 
         // Get list view for the products and set the adapter.
-        listView = findViewById(R.id.ordersList);
-        listView.setAdapter(adapter);
-
-        // Set the listener.
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Toast.makeText(getApplicationContext(),listView.getItemAtPosition(i).toString(),
-                        Toast.LENGTH_LONG).show();
-
-                // Get selected order
-                m_order = orders[i];
-
-                // Move to ProductsStatusActivity activity
-                Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
-                intent.putExtra("classOrder", m_order);
-                startActivity(intent);
-            }
-        });
-
-
-
+        m_listViewOrders.setAdapter(adapter);
     }
 }
