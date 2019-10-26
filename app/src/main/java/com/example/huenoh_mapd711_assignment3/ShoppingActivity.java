@@ -88,10 +88,12 @@ public class ShoppingActivity extends AppCompatActivity {
 
         switch (menuItem.getItemId()){
             case R.id.profileItem:
-                Toast.makeText(getApplicationContext(),"profileItem selected",Toast.LENGTH_LONG);
+                //TODO : move to profile activity.
+                Toast.makeText(getApplicationContext(),"profileItem selected",Toast.LENGTH_LONG).show();
                 break;
             case R.id.ordersItem:
-                Toast.makeText(getApplicationContext(),"ordersItem selected",Toast.LENGTH_LONG);
+                //TODO : move to orderlist activity -> AdminOrderList for now.
+                Toast.makeText(getApplicationContext(),"ordersItem selected",Toast.LENGTH_LONG).show();
                 break;
         }
 
