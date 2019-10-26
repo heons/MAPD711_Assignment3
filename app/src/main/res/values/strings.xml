@@ -9,6 +9,6 @@
     <string name="login_admin">Admin</string>
 
     // status of the order
-    <string name="status_inProgress">In-Progress</string>
+    <string name="status_inProgress">In-Process</string>
     <string name="status_onDelivery">Delivery</string>
 </resources>
