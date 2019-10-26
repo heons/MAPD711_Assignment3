@@ -23,11 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private OrderManager orderManager;
 
 
-    int checkIfAdminOrCustomer = 0;
     EditText editTextName,editTextPassword;
     Button loginButton;
     RadioButton radioButtonAdmin,radioButtonUsers;
-    int radioButtonValue = 0;
+    int radioButtonValue = 0; // 0-admin, 1-customer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -257,7 +256,6 @@ public class MainActivity extends AppCompatActivity {
         // Add to the DB
         try {
             adminManager.addRow(contentValues, AdminManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a admin added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
