@@ -19,6 +19,8 @@ public class ProductInformation extends AppCompatActivity {
     };
 
 
+    Product m_product;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +39,23 @@ public class ProductInformation extends AppCompatActivity {
         quantitySpinner.setAdapter(adapter);
 
 
+        // Get product from previous activity.
         Intent intent = getIntent();
-        String itemName = intent.getStringExtra("itemName");
-        System.out.println(itemName);
+        m_product = (Product) intent.getSerializableExtra("classProduct");;
 
-        productName.setText(itemName);
+        productName.setText(m_product.getProductName());
         productDescription.setText("The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system (OS), and as of 2017, there were 2.2 million apps available for it through the Apple App Store, according to Statista.");
-        productPrice.setText("$33333");
+        productPrice.setText(Double.toString(m_product.getPrice()));
+
     }
 
 
     public void onClickButton(View view){
-          Intent intent = new Intent(ProductInformation.this,OrderDetails.class);
-          startActivity(intent);
+        // TODO : Create an order and put it to the db.
+
+        
+        Intent intent = new Intent(ProductInformation.this,OrderDetails.class);
+        startActivity(intent);
     }
 
 

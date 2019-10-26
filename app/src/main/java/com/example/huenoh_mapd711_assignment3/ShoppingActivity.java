@@ -18,6 +18,7 @@ import java.util.List;
 
 public class ShoppingActivity extends AppCompatActivity {
 
+    private static Product m_product = new Product();
 
     ProductManager productManager = new ProductManager(this);
     Product[] products;
@@ -63,13 +64,13 @@ public class ShoppingActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),listView.getItemAtPosition(i).toString(),
                         Toast.LENGTH_LONG).show();
 
-                String x = adapter.getItem(i);
-                System.out.println(x);
+                // Get selected products
+                m_product = products[i];
 
-                Intent intent = new Intent(ShoppingActivity. this,ProductInformation.class);
-                intent.putExtra("itemName",x);
+                // Move to ProductInformation activity
+                Intent intent = new Intent(ShoppingActivity. this, ProductInformation.class);
+                intent.putExtra("classProduct", m_product);
                 startActivity(intent);
-
             }
         });
 
