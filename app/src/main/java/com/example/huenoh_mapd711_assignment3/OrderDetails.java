@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class OrderDetails extends AppCompatActivity {
 
     /* Member variables */
@@ -89,29 +92,33 @@ public class OrderDetails extends AppCompatActivity {
             contentValues.put("productId", m_product.getProductId());
             contentValues.put("employeeId", 1); //TODO : do something
             contentValues.put("quantity", m_quantity);
-            contentValues.put("orderDate", ""); //TODO : do something
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            contentValues.put("orderDate", LocalDateTime.now().format(dtf));
+
             contentValues.put("status", getString(R.string.status_inProgress));
 
             // Add an order to the DB
             OrderManager orderManager = new OrderManager(this);
             try {
                 orderManager.addRow(contentValues, OrderManager.TABLE_NAME);
+
+                // Initialize ContentValues object for the edit
+                contentValues = new ContentValues();
+                contentValues.put("quantity", m_product.getQuantity() - m_quantity);
+
+                // Update product quantity.
+                ProductManager productManager = new ProductManager(this);
+                try {
+                    productManager.editRow(m_product.getProductId(), "productId", contentValues, ProductManager.TABLE_NAME);
+                } catch (Exception exception) {
+                    //TODO : what if it fails?
+                    Log.i("Error: ", exception.getMessage());
+                }
             } catch (Exception exception) {
                 Log.i("Error: ", exception.getMessage());
             }
 
-
-            // Initialize ContentValues object for the edit
-            contentValues = new ContentValues();
-            contentValues.put("quantity", m_product.getQuantity() - m_quantity);
-
-            // Update product quantity.
-            ProductManager productManager = new ProductManager(this);
-            try {
-                productManager.editRow(m_product.getProductId(), "productId", contentValues, ProductManager.TABLE_NAME);
-            } catch (Exception exception) {
-                Log.i("Error: ", exception.getMessage());
-            }
         }
     }
 
