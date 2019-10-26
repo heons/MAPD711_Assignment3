@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class AdminOrdersList extends AppCompatActivity {
 
+    private static Order m_order = new Order();
 
     ListView listView;
 
@@ -59,12 +60,13 @@ public class AdminOrdersList extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),listView.getItemAtPosition(i).toString(),
                         Toast.LENGTH_LONG).show();
 
-                String x = adapter.getItem(i);
-                System.out.println(x);
+                // Get selected order
+                m_order = orders[i];
 
+                // Move to ProductsStatusActivity activity
                 Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
+                intent.putExtra("classOrder", m_order);
                 startActivity(intent);
-
             }
         });
 
