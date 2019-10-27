@@ -39,8 +39,7 @@ public class ProductInformation extends AppCompatActivity {
 
         // Set product information
         productName.setText(m_product.getProductName());
-        // TODO : add description to the database and use it.
-        productDescription.setText("The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system (OS), and as of 2017, there were 2.2 million apps available for it through the Apple App Store, according to Statista.");
+        productDescription.setText(m_product.getDescription());
         productPrice.setText(Double.toString(m_product.getPrice()));
 
         // Create array for spinner : Quantity selection for the product.

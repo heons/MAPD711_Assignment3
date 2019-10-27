@@ -8,17 +8,19 @@ public class Product implements Serializable {
     private double price;
     private int quantity;
     private String category;
+    private String description;
 
 
     public Product() {
     }
 
-    public Product(int productId, String productName, double price, int quantity, String category) {
+    public Product(int productId, String productName, double price, int quantity, String category, String description) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
         this.category = category;
+        this.description = description;
     }
 
     // Getters
@@ -42,6 +44,8 @@ public class Product implements Serializable {
         return category;
     }
 
+    public String getDescription() { return description; }
+
 
     // Setters
     public void setProductId(int productId) {
@@ -63,6 +67,8 @@ public class Product implements Serializable {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public void setDescription(String description) { this.description = description; }
 
     // To send the object between activities.
     public static class ProductChild implements Serializable {
