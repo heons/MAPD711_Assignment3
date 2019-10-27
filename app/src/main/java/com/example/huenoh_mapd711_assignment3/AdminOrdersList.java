@@ -36,10 +36,21 @@ public class AdminOrdersList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                // Move to ProductsStatusActivity activity
-                Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
-                intent.putExtra("classOrder", m_orders[i]);
-                startActivity(intent);
+                // Get shared preference for customerId
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
+
+                String userType = pref.getString("UserType", "");
+
+                if (userType.equals("admin")) {
+                    // Move to ProductsStatusActivity activity
+                    Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
+                    intent.putExtra("classOrder", m_orders[i]);
+                    startActivity(intent);
+                } else if (userType.equals("customer")) {
+                    // TODO : Go to order detail?
+                } else {
+                    // Do nothing
+                }
             }
         });
     }
@@ -87,7 +98,9 @@ public class AdminOrdersList extends AppCompatActivity {
         // Update strings for the list adapter
         m_strOrdersList = new String[m_orders.length];
         for (int i = 0; i < m_orders.length; ++i) {
-            m_strOrdersList[i] = m_orders[i].getOrderDate() + "(Status : " + m_orders[i].getStatus() + ")";
+            m_strOrdersList[i] = Integer.toString(i + 1) + ". "
+                    + m_orders[i].getOrderDate() + "(Status : "
+                    + m_orders[i].getStatus() + ")";
         }
 
         // Create array adapter for the list view
