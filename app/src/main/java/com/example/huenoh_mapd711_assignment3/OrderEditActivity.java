@@ -9,8 +9,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class OrderEditActivity extends AppCompatActivity {
 
@@ -21,6 +26,7 @@ public class OrderEditActivity extends AppCompatActivity {
     // View Object
     private TextView m_productName, m_productDescription, m_productPrice;
     private Spinner m_spinnerQuantity, m_spinnerStatus;
+    private Button m_btnUpdate;
 
     // Product information from previous activity
     private Order m_order;
@@ -40,6 +46,7 @@ public class OrderEditActivity extends AppCompatActivity {
         m_productPrice = findViewById(R.id.itemPrice);
         m_spinnerQuantity = findViewById(R.id.quantitySpinner1);
         m_spinnerStatus = findViewById(R.id.statusSpinner);
+        m_btnUpdate = findViewById(R.id.btnUpdateProfile);
 
         // Get shared preference for UserType and UserID
         m_pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
@@ -93,8 +100,18 @@ public class OrderEditActivity extends AppCompatActivity {
             m_spinnerQuantity.setEnabled(false);
         } else if (m_userType.equals("customer")) {
             m_spinnerStatus.setEnabled(false);
-        } else {
+        } else {}
 
+        // Check time to disable changes
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime timeOrder = LocalDateTime.parse(m_order.getOrderDate(), dtf);
+        LocalDateTime timeNow = LocalDateTime.now();
+
+        // If time passed more than a day not possible to make a change
+        long diff = ChronoUnit.DAYS.between(timeOrder, timeNow);
+        if(diff > 0) {
+            m_spinnerQuantity.setEnabled(false);
+            m_btnUpdate.setEnabled(false);
         }
 
     }

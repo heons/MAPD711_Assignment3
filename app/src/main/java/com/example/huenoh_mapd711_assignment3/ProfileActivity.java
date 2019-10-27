@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void onClickBtnUpdate(View view) {
         //TODO : validation
 
-        // Initialize ContentValues for the order
+        // Initialize ContentValues for the update
         ContentValues contentValues;
         contentValues = new ContentValues();
         //contentValues.put("customerId", m_customer.getCustomerId());
@@ -80,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
         contentValues.put("email", userEmail.getText().toString());
         //contentValues.put("password", userEmail.getText().toString()); //TODO
 
-        // Update the order
+        // Update the customer
         CustomerManager customerManager = new CustomerManager(this);
         try {
             customerManager.editRow(m_customer.getCustomerId(), "customerId", contentValues, CustomerManager.TABLE_NAME);

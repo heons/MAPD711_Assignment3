@@ -110,7 +110,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
             contentValues.put("quantity", m_quantity);
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            contentValues.put("orderDate", LocalDateTime.now().format(dtf));
+            //contentValues.put("orderDate", LocalDateTime.now().format(dtf));
+            contentValues.put("orderDate", "2019/10/25 00:00:00");
 
             contentValues.put("status", getString(R.string.status_inProgress));
 

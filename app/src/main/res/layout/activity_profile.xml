@@ -172,7 +172,6 @@
 
 
         <Button
-            android:id="@+id/btnUpdateProfile"
             android:layout_width="147dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
