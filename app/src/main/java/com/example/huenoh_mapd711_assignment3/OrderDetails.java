@@ -33,6 +33,7 @@ public class OrderDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
 
+        // Get views for user
         userName = findViewById(R.id.name);
         userPhone = findViewById(R.id.phone);
         userEmail = findViewById(R.id.email);
@@ -40,7 +41,7 @@ public class OrderDetails extends AppCompatActivity {
         userCity = findViewById(R.id.city);
         userPostalCode = findViewById(R.id.postalCode);
 
-
+        // Get views for product
         productName = findViewById(R.id.productName);
         productPrice = findViewById(R.id.productPrice);
         productQuantity = findViewById(R.id.productQuantity);
@@ -52,17 +53,32 @@ public class OrderDetails extends AppCompatActivity {
         m_product = (Product) intent.getSerializableExtra("classProduct");
         m_quantity = intent.getIntExtra("quantity", 1);
 
-        // Update user information
+        // Get userName from shared preference.
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
-        userName.setText(pref.getString("CustomerName",""));
+        String strUserName = pref.getString("CustomerName","");
 
-        // TODO : add them to the DB
-        userPhone.setText("+1 2223234565");
-        userEmail.setText("Angad@gmail.com");
-        userAddress.setText("Ellesmere Road");
-        userCity.setText("Scarborough");
-        userPostalCode.setText("M1R3R7");
 
+        // Display user information
+        CustomerManager customerManager = new CustomerManager(this);
+        try {
+            Customer customer = customerManager.getCustomerById(strUserName , "userName");
+            if (null != customer) {
+                userName.setText(customer.getFirstName() + " " + customer.getLastName());
+                userPhone.setText(""); //TODO : do something
+                userEmail.setText(""); // TODO do something
+                userAddress.setText(customer.getAddress());
+                userCity.setText(customer.getCity());
+                userPostalCode.setText(customer.getPostalCode());
+
+            } else {}
+        }
+        catch (Exception exception)
+        {
+            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+
+        // Display product information
         productName.setText(m_product.getProductName());
         productPrice.setText(
                 Double.toString(m_product.getPrice()) + " * " + Integer.toString(m_quantity) + " = "
