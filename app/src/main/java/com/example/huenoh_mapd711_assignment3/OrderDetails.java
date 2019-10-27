@@ -64,8 +64,8 @@ public class OrderDetails extends AppCompatActivity {
             Customer customer = customerManager.getCustomerById(strUserName , "userName");
             if (null != customer) {
                 userName.setText(customer.getFirstName() + " " + customer.getLastName());
-                userPhone.setText(""); //TODO : do something
-                userEmail.setText(""); // TODO do something
+                userPhone.setText(customer.getPhoneNumber());
+                userEmail.setText(customer.getEmail());
                 userAddress.setText(customer.getAddress());
                 userCity.setText(customer.getCity());
                 userPostalCode.setText(customer.getPostalCode());

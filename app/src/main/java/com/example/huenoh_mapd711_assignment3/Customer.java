@@ -10,6 +10,8 @@ public class Customer {
     private String address;
     private String city;
     private String postalCode;
+    private String phoneNumber;
+    private String email;
 
     public Customer() {
     }
@@ -23,6 +25,8 @@ public class Customer {
         this.address = "";
         this.city = "";
         this.postalCode = "";
+        this.phoneNumber = "";
+        this.email = "";
     }
 
 
@@ -59,9 +63,12 @@ public class Customer {
         return postalCode;
     }
 
+    public String getPhoneNumber() { return phoneNumber; }
+
+    public String getEmail() { return email; }
+
 
     // Setters
-
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
@@ -93,4 +100,8 @@ public class Customer {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public void setEmail(String email) { this.email = email; }
 }

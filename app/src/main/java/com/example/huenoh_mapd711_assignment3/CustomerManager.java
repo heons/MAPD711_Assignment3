@@ -16,7 +16,7 @@ public class CustomerManager extends OnlinePurchasingDBManager{
     public static final String TABLE_NAME = "Customer";
     public static final String TABLE_CREATE_STRING = "CREATE TABLE "+ TABLE_NAME
             + " (customerId integer primary key, userName text, password text" +
-            ", firstName text, lastName text, address text, city text, postalCode text);";
+            ", firstName text, lastName text, address text, city text, postalCode text, phoneNumber text, email text);";
 
     /**
      * Initializer
@@ -50,6 +50,8 @@ public class CustomerManager extends OnlinePurchasingDBManager{
             customer.setAddress(cursor.getString(5));
             customer.setCity(cursor.getString(6));
             customer.setPostalCode(cursor.getString(7));
+            customer.setPhoneNumber(cursor.getString(8));
+            customer.setEmail(cursor.getString(9));
             cursor.close();
 
         } else {

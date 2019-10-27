@@ -231,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("address", "28 uptown");
         contentValues.put("city", "markham");
         contentValues.put("postalCode", "L3R5M8");
+        contentValues.put("phoneNumber", "+1-437-984-2110");
+        contentValues.put("email", "heons921@gmail.com");
+
 
         // Add to the DB
         try {
