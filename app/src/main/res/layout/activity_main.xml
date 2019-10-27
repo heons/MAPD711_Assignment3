@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEFFFF"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,12 +13,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:text="Online Purchasing App"
         android:textColor="#F44336"
         android:textSize="30dp" />
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/shopping_ico" />
 
     <TextView
         style="@style/text_defaultLabel.bold"
@@ -27,8 +34,7 @@
         android:id="@+id/editTextName"
         style="@style/text_defaultEdit"
         android:hint="Please enter the UserName"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <TextView
         style="@style/text_defaultLabel.bold"
@@ -58,10 +64,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Admin"
-                android:textSize="18dp"
                 android:checked="true"
-                />
+                android:text="Admin"
+                android:textSize="18dp" />
 
             <RadioButton
                 android:id="@+id/radioUsers"
@@ -79,9 +84,9 @@
     <Button
         android:id="@+id/loginButton"
         style="@style/btn_default"
-        android:layout_width="170dp"
-        android:text="Login"
-        android:onClick="onClickLoginButton" />
+        android:layout_width="147dp"
+        android:onClick="onClickLoginButton"
+        android:text="Login" />
 
 
 </LinearLayout>
