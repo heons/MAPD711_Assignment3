@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
         android:text="Online Purchasing App"
         android:textColor="#F44336"
         android:textSize="30dp" />
@@ -20,7 +21,6 @@
 
     <TextView
         style="@style/text_defaultLabel"
-        android:layout_marginTop="40dp"
         android:text="UserName" />
 
     <EditText
@@ -36,7 +36,6 @@
 
     <TextView
         style="@style/text_defaultLabel"
-        android:layout_marginTop="20dp"
         android:text="Password" />
 
     <EditText
