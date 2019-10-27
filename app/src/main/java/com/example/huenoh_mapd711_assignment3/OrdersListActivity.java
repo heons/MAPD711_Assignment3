@@ -25,6 +25,9 @@ public class OrdersListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders_list);
 
+        // Set title.
+        getSupportActionBar().setTitle(R.string.activity_title_orderList);
+
         // Get order list view
         m_listViewOrders = findViewById(R.id.ordersList);
 

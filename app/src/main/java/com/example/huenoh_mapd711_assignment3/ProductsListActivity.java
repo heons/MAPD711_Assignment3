@@ -26,6 +26,9 @@ public class ProductsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
 
+        // Set title.
+        getSupportActionBar().setTitle(R.string.activity_title_productList);
+
         // Get product list view
         m_listViewProduct = findViewById(R.id.listView);
 

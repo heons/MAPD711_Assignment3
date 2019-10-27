@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set title.
+        getSupportActionBar().setTitle(R.string.activity_title_main);
+
         // Get views
         editTextName = findViewById(R.id.editTextName);
         editTextPassword = findViewById(R.id.editTextPassword);

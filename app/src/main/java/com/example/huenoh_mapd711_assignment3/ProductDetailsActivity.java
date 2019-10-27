@@ -27,6 +27,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
+        // Set title.
+        getSupportActionBar().setTitle(R.string.activity_title_productDetails);
+
+        // Get views
         productName = findViewById(R.id.itemName);
         productDescription = findViewById(R.id.itemDescription);
         productPrice = findViewById(R.id.itemPrice);

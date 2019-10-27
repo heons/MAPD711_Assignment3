@@ -21,6 +21,10 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        // Set title.
+        getSupportActionBar().setTitle(R.string.activity_title_profile);
+
+        // Get views
         userNameFirst = findViewById(R.id.profileFirstName);
         userNameLast = findViewById(R.id.profileLastName);
         userEmail = findViewById(R.id.profileEmail);

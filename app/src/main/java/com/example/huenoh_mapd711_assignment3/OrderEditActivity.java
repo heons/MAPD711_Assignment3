@@ -40,6 +40,9 @@ public class OrderEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_edit);
 
+        // Set title.
+        getSupportActionBar().setTitle(R.string.activity_title_orderEdit);
+
         // Get views
         m_productName = findViewById(R.id.itemName);
         m_productDescription = findViewById(R.id.itemDescription);

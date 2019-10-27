@@ -33,6 +33,9 @@ public class OrderDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
 
+        // Set title.
+        getSupportActionBar().setTitle(R.string.activity_title_orderDetails);
+
         // Get views for user
         userName = findViewById(R.id.name);
         userPhone = findViewById(R.id.phone);

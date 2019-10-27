@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">HuenOh_ MAPD711_Assignment3</string>e
 
+    // Titles for activities
+    <string name="activity_title_main">Online Purchasing App</string>
+    <string name="activity_title_productList">Product List</string>
+    <string name="activity_title_productDetails">Product Details</string>
+    <string name="activity_title_orderList">Order List</string>
+    <string name="activity_title_orderDetails">Order Details</string>
+    <string name="activity_title_orderEdit">Order Edit</string>
+    <string name="activity_title_profile">Profile</string>
+
+    
     <string name="login_userName">User Name</string>
     <string name="login_password">Password</string>
     <string name="login_rememberPassword">Remember Password</string>
