@@ -277,7 +277,6 @@ public class MainActivity extends AppCompatActivity {
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -294,7 +293,6 @@ public class MainActivity extends AppCompatActivity {
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -311,7 +309,6 @@ public class MainActivity extends AppCompatActivity {
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -328,7 +325,6 @@ public class MainActivity extends AppCompatActivity {
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -345,7 +341,6 @@ public class MainActivity extends AppCompatActivity {
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
