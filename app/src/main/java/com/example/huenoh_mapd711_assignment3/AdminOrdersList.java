@@ -3,6 +3,7 @@ package com.example.huenoh_mapd711_assignment3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -62,9 +63,21 @@ public class AdminOrdersList extends AppCompatActivity {
         // Order Manager
         OrderManager orderManager = new OrderManager(this);
 
+        // Get shared preference for customerId
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
+
+        String userType = pref.getString("UserType", "");
+
         // Get all the orders from the database.
         try {
-            m_orders = orderManager.getAllOrders();
+            if (userType.equals("admin")) {
+                m_orders = orderManager.getAllOrders();
+            } else if (userType.equals("customer")) {
+                int customerID = pref.getInt("UserId", -1); // getting Integer
+                m_orders = orderManager.getOrdersByCustomerId(customerID);
+            } else {
+                m_orders = null;
+            }
         }
         catch (Exception exception)
         {
