@@ -29,8 +29,6 @@ public class ProductsStatusActivity extends AppCompatActivity {
     private String m_userType;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +74,7 @@ public class ProductsStatusActivity extends AppCompatActivity {
                     android.R.layout.simple_spinner_item, m_arrSpinnerQuantity);
             adapterQuantity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             m_spinnerQuantity.setAdapter(adapterQuantity);
-            m_spinnerQuantity.setSelection(m_order.getQuantity() + 1);
+            m_spinnerQuantity.setSelection(m_order.getQuantity());
 
         } catch (Exception exception) {
             Log.i("Error: ",exception.getMessage());
@@ -109,8 +107,10 @@ public class ProductsStatusActivity extends AppCompatActivity {
     public void onClickBtnUpdate(View view){
 
         // Initialize ContentValues for the order
-        ContentValues contentValues = new ContentValues();
+        ContentValues contentValues;
+        contentValues = new ContentValues();
         contentValues.put("status", m_spinnerStatus.getSelectedItem().toString());
+        contentValues.put("quantity", m_spinnerQuantity.getSelectedItem().toString());
 
         // Update the order
         OrderManager orderManager = new OrderManager(this);
@@ -118,6 +118,38 @@ public class ProductsStatusActivity extends AppCompatActivity {
             orderManager.editRow(m_order.getOrderId(), "orderId", contentValues, OrderManager.TABLE_NAME);
         } catch (Exception exception) {
             Log.i("Error: ", exception.getMessage());
+        }
+
+
+        // Update product quantity
+        ProductManager productManager = new ProductManager(this);
+        try {
+            // get product
+            Product product = productManager.getProductById(m_order.getProductId(), "productId");
+
+            contentValues = new ContentValues();
+            int quantityChanged = (int)m_spinnerQuantity.getSelectedItemId() - m_order.getQuantity();
+            contentValues.put("quantity", product.getQuantity() - quantityChanged);
+
+            // Update product
+            try {
+                productManager.editRow(m_order.getProductId(), "productId", contentValues, ProductManager.TABLE_NAME);
+            } catch (Exception exception) {
+                Log.i("Error: ", exception.getMessage());
+            }
+
+        } catch (Exception exception) {
+            Log.i("Error: ", exception.getMessage());
+        }
+
+
+        // Delete the order if the quantity is 0
+        if (0 == m_spinnerQuantity.getSelectedItemId()) {
+            try {
+                orderManager.deleteRow(m_order.getOrderId(), "orderId", OrderManager.TABLE_NAME);
+            } catch (Exception exception) {
+                Log.i("Error: ", exception.getMessage());
+            }
         }
 
         // Go back to previous activity.

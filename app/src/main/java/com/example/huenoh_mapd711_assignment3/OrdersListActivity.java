@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class AdminOrdersList extends AppCompatActivity {
+public class OrdersListActivity extends AppCompatActivity {
 
     /* Member variables */
     private ListView m_listViewOrders; // List view for orders
@@ -23,7 +23,7 @@ public class AdminOrdersList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_orders_list);
+        setContentView(R.layout.activity_orders_list);
 
         // Get order list view
         m_listViewOrders = findViewById(R.id.ordersList);
@@ -41,7 +41,7 @@ public class AdminOrdersList extends AppCompatActivity {
 
                 String userType = pref.getString("UserType", "");
 
-                Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
+                Intent intent = new Intent(OrdersListActivity. this,ProductsStatusActivity.class);
                 intent.putExtra("classOrder", m_orders[i]);
                 startActivity(intent);
             }

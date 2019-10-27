@@ -11,9 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class ShoppingActivity extends AppCompatActivity {
+public class ProductsListActivity extends AppCompatActivity {
 
     /* Member variables */
     private ListView m_listViewProduct; // List view for products
@@ -25,7 +24,7 @@ public class ShoppingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shopping);
+        setContentView(R.layout.activity_product_list);
 
         // Get product list view
         m_listViewProduct = findViewById(R.id.listView);
@@ -39,7 +38,7 @@ public class ShoppingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 // Move to ProductInformation activity
-                Intent intent = new Intent(ShoppingActivity. this, ProductInformation.class);
+                Intent intent = new Intent(ProductsListActivity. this, ProductInformation.class);
                 intent.putExtra("classProduct", m_products[i]);
                 startActivity(intent);
             }
@@ -70,12 +69,12 @@ public class ShoppingActivity extends AppCompatActivity {
             case R.id.profileItem:
                 //TODO : move to profile activity.
 //                Toast.makeText(getApplicationContext(),"profileItem selected",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(ShoppingActivity.this,ProfileActivity.class);
+                Intent intent = new Intent(ProductsListActivity.this,ProfileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.ordersItem:
                 //TODO : move to orderlist activity -> AdminOrderList for now.
-                Intent intent1 = new Intent(ShoppingActivity.this,AdminOrdersList.class);
+                Intent intent1 = new Intent(ProductsListActivity.this, OrdersListActivity.class);
                 startActivity(intent1);
 //                Toast.makeText(getApplicationContext(),"ordersItem selected",Toast.LENGTH_LONG).show();
                 break;

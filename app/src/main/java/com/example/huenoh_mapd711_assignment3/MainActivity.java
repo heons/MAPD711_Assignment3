@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 //System.out.println("successful login admin");
                 isOK = true;
                 // Move to AdminOrderList activity.
-                Intent intent = new Intent(MainActivity. this,AdminOrdersList.class);
+                Intent intent = new Intent(MainActivity. this, OrdersListActivity.class);
                 startActivity(intent);
             }
 
@@ -134,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 //System.out.println("successful login users");
                 isOK = true;
 
-                // Move to ShoppingActivity activity
-                Intent intent = new Intent(MainActivity.this, ShoppingActivity.class);
+                // Move to ProductsListActivity activity
+                Intent intent = new Intent(MainActivity.this, ProductsListActivity.class);
                 startActivity(intent);
             }
         }
