@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HuenOh_ MAPD711_Assignment3</string>
+    <string name="app_name">HuenOh_ MAPD711_Assignment3</string>e
 
     <string name="login_userName">User Name</string>
     <string name="login_password">Password</string>
@@ -11,6 +11,7 @@
     // status of the order
     <string name="status_inProgress">In-Process</string>
     <string name="status_onDelivery">Delivery</string>
+
 
 
     // profile
@@ -33,5 +34,7 @@
     <string name="updateButton">Update</string>
 
 
+    // string for dummy description
+    <string name="dummy_description">The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system (OS), and as of 2017, there were 2.2 million apps available for it through the Apple App Store, according to Statistic.</string>
 
 </resources>

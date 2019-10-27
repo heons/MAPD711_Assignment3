@@ -231,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("address", "28 uptown");
         contentValues.put("city", "markham");
         contentValues.put("postalCode", "L3R5M8");
+        contentValues.put("phoneNumber", "+1-437-984-2110");
+        contentValues.put("email", "heons921@gmail.com");
+
 
         // Add to the DB
         try {
@@ -273,11 +276,11 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 1000.9);
         contentValues.put("quantity", 1);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -290,11 +293,11 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 1100.9);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -307,11 +310,11 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 500);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -324,11 +327,11 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 610.10);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());
@@ -341,11 +344,11 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 610.10);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
             productManager.addRow(contentValues, ProductManager.TABLE_NAME);
-            Toast.makeText(MainActivity.this, "a product added", Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
             Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ", exception.getMessage());

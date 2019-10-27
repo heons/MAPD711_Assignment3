@@ -2,7 +2,6 @@ package com.example.huenoh_mapd711_assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,17 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.List;
-
 public class ShoppingActivity extends AppCompatActivity {
 
-    private static Product m_product = new Product();
+    /* Member variables */
+    private ListView m_listViewProduct; // List view for products
 
-    ProductManager productManager = new ProductManager(this);
-    Product[] products;
-    String[] strProductsList;
-
-    ListView listView;
+    private Product[] m_products;       // Array for products
+    private String[] m_strProductsList; // Array for products' display strings
 
 
     @Override
@@ -32,50 +27,35 @@ public class ShoppingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping);
 
+        // Get product list view
+        m_listViewProduct = findViewById(R.id.listView);
 
-        // Get all the products from the database.
-        try {
-            this.products = productManager.getAllProducts();
-        }
-        catch (Exception exception)
-        {
-            Log.i("Error: ",exception.getMessage());
-        }
-
-
-        // Update strings for the list adapter
-        strProductsList = new String[products.length];
-        for (int i = 0; i < products.length; ++i) {
-            strProductsList[i] = products[i].getProductName() + "(Quantity : " + products[i].getQuantity() + ")";
-        }
-
-        // Create array adapter for the list view
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, strProductsList);
-
-        // Get list view for the products and set the adapter.
-        listView = findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        // Update product list view
+        updateProductList();
 
         // Set the listener.
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        m_listViewProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(getApplicationContext(),listView.getItemAtPosition(i).toString(),
-                        Toast.LENGTH_LONG).show();
-
-                // Get selected products
-                m_product = products[i];
-
                 // Move to ProductInformation activity
                 Intent intent = new Intent(ShoppingActivity. this, ProductInformation.class);
-                intent.putExtra("classProduct", m_product);
+                intent.putExtra("classProduct", m_products[i]);
                 startActivity(intent);
             }
         });
-
     }
 
+    /**
+     * onResume operation.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Update the product list view
+        updateProductList();
+    }
 
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -104,5 +84,35 @@ public class ShoppingActivity extends AppCompatActivity {
         return true;
     }
 
+
+    /**
+     * Update the product list view by loading data from the DB
+     */
+    private void updateProductList() {
+        // Product Manager
+        ProductManager productManager = new ProductManager(this);
+
+        // Get all the products from the database.
+        try {
+            m_products = productManager.getAllProducts();
+        }
+        catch (Exception exception)
+        {
+            Log.i("Error: ",exception.getMessage());
+        }
+
+
+        // Update strings for the list adapter
+        m_strProductsList = new String[m_products.length];
+        for (int i = 0; i < m_products.length; ++i) {
+            m_strProductsList[i] = m_products[i].getProductName() + "(Quantity : " + m_products[i].getQuantity() + ")";
+        }
+
+        // Create array adapter for the list view
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, m_strProductsList);
+
+        // Get list view for the products and set the adapter.
+        m_listViewProduct.setAdapter(adapter);
+    }
 
 }

@@ -11,7 +11,7 @@ public class ProductManager extends OnlinePurchasingDBManager {
     public static final String TABLE_NAME = "Product";
     public static final String TABLE_CREATE_STRING = "CREATE TABLE "+ TABLE_NAME
             + " (productId integer primary key, productName text, price double" +
-            ", quantity integer, category text);";
+            ", quantity integer, category text, description text);";
 
     public ProductManager(Context context) {
         super(context);
@@ -34,6 +34,7 @@ public class ProductManager extends OnlinePurchasingDBManager {
             product.setPrice(cursor.getDouble(2));
             product.setQuantity(cursor.getInt(3));
             product.setCategory(cursor.getString(4));
+            product.setDescription(cursor.getString(5));
             cursor.close();
 
         } else {
@@ -62,7 +63,8 @@ public class ProductManager extends OnlinePurchasingDBManager {
                         , cursor.getString(1)
                         , cursor.getDouble(2)
                         , cursor.getInt(3)
-                        , cursor.getString(4));
+                        , cursor.getString(4)
+                        , cursor.getString(5));
                 products[i] = product;
                 cursor.moveToNext();
             }
