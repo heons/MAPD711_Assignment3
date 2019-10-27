@@ -18,14 +18,9 @@
 
         <EditText
             android:id="@+id/profileFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintFirstName"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
+            android:hint="@string/hintFirstName" />
 
 
         <TextView
@@ -34,16 +29,9 @@
 
         <EditText
             android:id="@+id/profileLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintLastName"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
-
-
+            android:hint="@string/hintLastName" />
 
 
         <TextView
@@ -52,16 +40,9 @@
 
         <EditText
             android:id="@+id/profileEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintEmail"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
-
-
+            android:hint="@string/hintEmail" />
 
 
         <TextView
@@ -70,15 +51,9 @@
 
         <EditText
             android:id="@+id/profilePhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintPhone"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
-
+            android:hint="@string/hintPhone" />
 
 
         <TextView
@@ -87,15 +62,9 @@
 
         <EditText
             android:id="@+id/profileAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintAddress"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
-
+            android:hint="@string/hintAddress" />
 
 
 
@@ -105,16 +74,9 @@
 
         <EditText
             android:id="@+id/profileCity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintCity"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
-
-
+            android:hint="@string/hintCity" />
 
 
         <TextView
@@ -123,14 +85,9 @@
 
         <EditText
             android:id="@+id/profilePostalCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintPostalCode"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
+            android:hint="@string/hintPostalCode" />
 
 
         <Button
