@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton rb1 = (RadioButton) findViewById(R.id.radioAdmin);
                 if(rb1.isChecked()){
                     radioButtonValue = 0;
-                    Toast.makeText(getApplicationContext(),"Yes", Toast.LENGTH_LONG).show();
                 } else {
                     radioButtonValue = 1;
                 }

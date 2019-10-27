@@ -105,7 +105,9 @@ public class ShoppingActivity extends AppCompatActivity {
         // Update strings for the list adapter
         m_strProductsList = new String[m_products.length];
         for (int i = 0; i < m_products.length; ++i) {
-            m_strProductsList[i] = m_products[i].getProductName() + "(Quantity : " + m_products[i].getQuantity() + ")";
+            m_strProductsList[i] = Integer.toString(i + 1) + ". "
+                    + m_products[i].getProductName()
+                    + "(Quantity : " + m_products[i].getQuantity() + ")";
         }
 
         // Create array adapter for the list view
