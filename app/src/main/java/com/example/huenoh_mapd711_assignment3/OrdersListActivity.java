@@ -95,7 +95,7 @@ public class OrdersListActivity extends AppCompatActivity {
         m_strOrdersList = new String[m_orders.length];
         for (int i = 0; i < m_orders.length; ++i) {
             m_strOrdersList[i] = Integer.toString(i + 1) + ". "
-                    + m_orders[i].getOrderDate() + "(Status : "
+                    + m_orders[i].getOrderDate() + "("
                     + m_orders[i].getStatus() + ")";
         }
 
