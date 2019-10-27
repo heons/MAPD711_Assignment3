@@ -73,7 +73,6 @@
             android:id="@+id/quantitySpinner"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"/>
-
     </LinearLayout>
 
 
@@ -86,7 +85,5 @@
         android:textColor="#F44336"
         android:textSize="18dp"
         android:onClick="onClickButton"/>
-
-
 
 </LinearLayout>

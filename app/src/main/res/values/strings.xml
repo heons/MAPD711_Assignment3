@@ -37,6 +37,15 @@
     <string name="productPrice">Price: </string>
     <string name="productQuantity">Quantity: </string>
 
+    // order
+    <string name="orderStatus">Status: </string>
+
+
+    <string-array name="orderStatus">
+        <item>In-Process</item>
+        <item>Delivery</item>
+    </string-array>
+
     // button
     <string name="btnOrder">Order</string>
 
