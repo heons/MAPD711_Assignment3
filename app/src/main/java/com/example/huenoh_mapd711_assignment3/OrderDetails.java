@@ -93,8 +93,8 @@ public class OrderDetails extends AppCompatActivity {
             contentValues.put("employeeId", 1); //TODO : do something
             contentValues.put("quantity", m_quantity);
 
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            contentValues.put("orderDate", LocalDateTime.now().format(dtf));
+//            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//            contentValues.put("orderDate", LocalDateTime.now().format(dtf));
 
             contentValues.put("status", getString(R.string.status_inProgress));
 
