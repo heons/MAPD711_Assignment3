@@ -11,4 +11,27 @@
     // status of the order
     <string name="status_inProgress">In-Process</string>
     <string name="status_onDelivery">Delivery</string>
+
+
+    // profile
+    <string name="profileFirstName">First Name</string>
+    <string name="profileLastName">Last Name</string>
+    <string name="profileEmail">Email</string>
+    <string name="profilePhone">Phone</string>
+    <string name="profileAddress">Address</string>
+    <string name="profileCity">City</string>
+    <string name="profilePostalCode">Postal Code</string>
+
+    // profile hint names
+    <string name="hintFirstName">First Name</string>
+    <string name="hintLastName">Last Name</string>
+    <string name="hintEmail">Email</string>
+    <string name="hintPhone">Phone</string>
+    <string name="hintAddress">Address</string>
+    <string name="hintCity">City</string>
+    <string name="hintPostalCode">Postal Code</string>
+    <string name="updateButton">Update</string>
+
+
+
 </resources>

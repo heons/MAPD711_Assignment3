@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Name"
+        android:text="@string/profileFirstName"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -27,10 +27,32 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name"
+        android:hint="@string/hintFirstName"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/profileLastName"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/profileLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/hintLastName"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"/>
 
 
 
@@ -40,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Email"
+        android:text="@string/profileEmail"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -50,7 +72,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Email"
+        android:hint="@string/hintEmail"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"/>
@@ -63,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Phone"
+        android:text="@string/profilePhone"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -73,7 +95,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Phone"
+        android:hint="@string/hintPhone"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"/>
@@ -87,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Address"
+        android:text="@string/profileAddress"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -97,7 +119,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Address"
+        android:hint="@string/hintAddress"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"/>
@@ -110,7 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="City"
+        android:text="@string/profileCity"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -120,7 +142,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="City"
+        android:hint="@string/hintCity"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"/>
@@ -133,7 +155,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Postal Code"
+        android:text="@string/profilePostalCode"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -143,7 +165,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Postal Code"
+        android:hint="@string/hintPostalCode"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"/>
@@ -155,7 +177,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Update"
+            android:text="@string/updateButton"
             android:textSize="18dp"
             android:textStyle="bold" />
 
