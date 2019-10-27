@@ -20,7 +20,7 @@
             android:id="@+id/profileFirstName"
             style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintFirstName" />
+            android:hint="@string/profileFirstName" />
 
 
         <TextView
@@ -31,7 +31,7 @@
             android:id="@+id/profileLastName"
             style="@style/text_defaultEdit"
             android:inputType="textPersonName"
-            android:hint="@string/hintLastName" />
+            android:hint="@string/profileLastName" />
 
 
         <TextView
@@ -41,7 +41,7 @@
         <EditText
             android:id="@+id/profileEmail"
             style="@style/text_defaultEdit"
-            android:hint="@string/hintEmail"
+            android:hint="@string/profileEmail"
             android:inputType="textEmailSubject"
             android:digits="@string/digits_email"/>
 
@@ -53,7 +53,7 @@
         <EditText
             android:id="@+id/profilePhone"
             style="@style/text_defaultEdit"
-            android:hint="@string/hintPhone"
+            android:hint="@string/profilePhone"
             android:inputType="phone"
             android:digits="@string/digits_phone"/>
 
@@ -65,7 +65,7 @@
         <EditText
             android:id="@+id/profileAddress"
             style="@style/text_defaultEdit"
-            android:hint="@string/hintAddress"
+            android:hint="@string/profileAddress"
             android:inputType="text"
             android:digits="@string/digits_address"/>
 
@@ -78,7 +78,7 @@
         <EditText
             android:id="@+id/profileCity"
             style="@style/text_defaultEdit"
-            android:hint="@string/hintCity"
+            android:hint="@string/profileCity"
             android:inputType="text"
             android:digits="@string/digits_alphabetsOnly"/>
 
@@ -90,7 +90,7 @@
         <EditText
             android:id="@+id/profilePostalCode"
             style="@style/text_defaultEdit"
-            android:hint="@string/hintPostalCode"
+            android:hint="@string/profilePostalCode"
             android:inputType="text"
             android:digits="@string/digits_alphabetsNumbers"/>
 
@@ -98,7 +98,7 @@
         <Button
             style="@style/btn_default"
             android:layout_width="170dp"
-            android:text="@string/updateButton"
+            android:text="@string/btnUpdate"
             android:onClick="onClickBtnUpdate" />
 
     </LinearLayout>

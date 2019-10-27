@@ -75,7 +75,7 @@
         android:id="@+id/btnUpdateProfile"
         style="@style/btn_default"
         android:layout_width="170dp"
-        android:text="Update"
+        android:text="@string/btnUpdate"
         android:onClick="onClickBtnUpdate" />
 
 

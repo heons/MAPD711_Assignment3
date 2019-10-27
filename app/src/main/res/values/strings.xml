@@ -10,7 +10,7 @@
     <string name="activity_title_orderEdit">Order Edit</string>
     <string name="activity_title_profile">Profile</string>
 
-
+    // Login activity
     <string name="login_userName">User Name</string>
     <string name="login_password">Password</string>
     <string name="login_rememberPassword">Remember Password</string>
@@ -23,7 +23,6 @@
     <string name="status_onDelivery">Delivery</string>
 
 
-
     // profile
     <string name="profileFirstName">First Name</string>
     <string name="profileLastName">Last Name</string>
@@ -33,24 +32,25 @@
     <string name="profileCity">City</string>
     <string name="profilePostalCode">Postal Code</string>
 
-    // profile hint names
-    <string name="hintFirstName">First Name</string>
-    <string name="hintLastName">Last Name</string>
-    <string name="hintEmail">Email</string>
-    <string name="hintPhone">Phone</string>
-    <string name="hintAddress">Address</string>
-    <string name="hintCity">City</string>
-    <string name="hintPostalCode">Postal Code</string>
-    <string name="updateButton">Update</string>
-
     // product
+    <string name="productName">Name: </string>
     <string name="productPrice">Price: </string>
     <string name="productQuantity">Quantity: </string>
+    <string name="productCategory">Category: </string>
 
     // order
+    <string name="orderPersonalInformation">Personal Information"</string>
+    <string name="orderInformation">Order Information</string>
+    <string name="orderName">Name: </string>
+    <string name="orderEmail">Email: </string>
+    <string name="orderPhone">Phone: </string>
+    <string name="orderAddress">Address: </string>
+    <string name="orderCity">City: </string>
+    <string name="orderPostalCode">Postal Code: </string>
     <string name="orderStatus">Status: </string>
 
 
+    // Array for order status
     <string-array name="orderStatus">
         <item>In-Process</item>
         <item>Delivery</item>
@@ -58,7 +58,8 @@
 
     // button
     <string name="btnOrder">Order</string>
-
+    <string name="btnUpdate">Update</string>
+    <string name="btnConfirmOrder">Confirm Order</string>
 
     // Strings for validations
     <string name="digits_alphabetsOnly">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
