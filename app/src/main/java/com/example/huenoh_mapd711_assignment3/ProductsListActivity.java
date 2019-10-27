@@ -67,16 +67,14 @@ public class ProductsListActivity extends AppCompatActivity {
 
         switch (menuItem.getItemId()){
             case R.id.profileItem:
-                //TODO : move to profile activity.
-//                Toast.makeText(getApplicationContext(),"profileItem selected",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(ProductsListActivity.this,ProfileActivity.class);
+                // Move to ProfileActivity
+                Intent intent = new Intent(ProductsListActivity.this, ProfileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.ordersItem:
-                //TODO : move to orderlist activity -> AdminOrderList for now.
+                // Move to OrdersListActivity
                 Intent intent1 = new Intent(ProductsListActivity.this, OrdersListActivity.class);
                 startActivity(intent1);
-//                Toast.makeText(getApplicationContext(),"ordersItem selected",Toast.LENGTH_LONG).show();
                 break;
         }
 

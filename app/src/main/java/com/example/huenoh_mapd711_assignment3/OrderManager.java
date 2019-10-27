@@ -146,7 +146,4 @@ public class OrderManager extends OnlinePurchasingDBManager {
         return orders;
     }
 
-
-    // TODO : add placeAnOrder()
-
 }
