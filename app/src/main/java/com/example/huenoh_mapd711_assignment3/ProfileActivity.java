@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -33,6 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
         userCity = findViewById(R.id.profileCity);
         userPostalCode = findViewById(R.id.profilePostalCode);
 
+        // Validate postal code by confining size of the text
+        userPostalCode.addTextChangedListener(new MyTextWatcher(6));
 
         // Get userName from shared preference.
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPreferences", 0); // 0 - for private mode
@@ -72,6 +76,11 @@ public class ProfileActivity extends AppCompatActivity {
     public void onClickBtnUpdate(View view) {
         //TODO : validation
 
+        if (userPostalCode.getText().length() < 6) {
+            printToast("Check postal code");
+            return;
+        }
+
         // Initialize ContentValues for the update
         ContentValues contentValues;
         contentValues = new ContentValues();
@@ -92,5 +101,40 @@ public class ProfileActivity extends AppCompatActivity {
             Log.i("Error: ", exception.getMessage());
         }
 
+    }
+
+    // My Text Watcher
+    public class MyTextWatcher implements TextWatcher {
+
+        int strSize; // Size of the text to be confined
+
+        private MyTextWatcher(int strSize) {
+            this.strSize = strSize;
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // TODO Auto-generated method stub
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            // TODO Auto-generated method stub
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            // Confine length of the text
+            int length = s.length();
+            if (length > strSize) {
+                s.delete(strSize, length);
+            }
+        }
+    }
+
+    private void printToast(String msg)
+    {
+        Toast.makeText(getBaseContext(), msg,
+                Toast.LENGTH_SHORT).show();
     }
 }
