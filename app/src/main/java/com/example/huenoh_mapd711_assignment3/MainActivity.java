@@ -222,7 +222,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addCustomer() {
         // Initialize ContentValues object with the new customer
-        ContentValues contentValues = new ContentValues();
+        ContentValues contentValues;
+        contentValues = new ContentValues();
         contentValues.put("customerId", 1);
         contentValues.put("userName", "heon");
         contentValues.put("password", "pwd");
@@ -234,6 +235,26 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("phoneNumber", "+1-437-984-2110");
         contentValues.put("email", "heons921@gmail.com");
 
+
+        // Add to the DB
+        try {
+            customerManager.addRow(contentValues, CustomerManager.TABLE_NAME);
+        } catch (Exception exception) {
+            Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ", exception.getMessage());
+        }
+
+        contentValues = new ContentValues();
+        contentValues.put("customerId", 2);
+        contentValues.put("userName", "hyo");
+        contentValues.put("password", "pwd");
+        contentValues.put("firstName", "h");
+        contentValues.put("lastName", "h");
+        contentValues.put("address", "28 uptown");
+        contentValues.put("city", "markham");
+        contentValues.put("postalCode", "L3R5M8");
+        contentValues.put("phoneNumber", "+1-437-984-2110");
+        contentValues.put("email", "hyo@gmail.com");
 
         // Add to the DB
         try {
