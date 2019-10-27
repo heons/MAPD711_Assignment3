@@ -41,16 +41,9 @@ public class AdminOrdersList extends AppCompatActivity {
 
                 String userType = pref.getString("UserType", "");
 
-                if (userType.equals("admin")) {
-                    // Move to ProductsStatusActivity activity
-                    Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
-                    intent.putExtra("classOrder", m_orders[i]);
-                    startActivity(intent);
-                } else if (userType.equals("customer")) {
-                    // TODO : Go to order detail?
-                } else {
-                    // Do nothing
-                }
+                Intent intent = new Intent(AdminOrdersList. this,ProductsStatusActivity.class);
+                intent.putExtra("classOrder", m_orders[i]);
+                startActivity(intent);
             }
         });
     }
