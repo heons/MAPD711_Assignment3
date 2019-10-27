@@ -14,17 +14,17 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:text="dsds"
+        android:text="@string/dummy"
         android:textSize="20dp"
         android:textStyle="bold" />
 
 
     <TextView
+        android:id="@+id/itemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:id="@+id/itemDescription"
-        android:text="dsds"
+        android:text="@string/dummy"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"/>
 
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:text="Price:"
+            android:text="@string/productPrice"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -53,12 +53,28 @@
 
     </LinearLayout>
 
-   <Spinner
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/quantitySpinner"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/productQuantity"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/quantitySpinner"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
 
 
     <Button
@@ -66,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Order"
+        android:text="@string/btnOrder"
         android:textColor="#F44336"
         android:textSize="18dp"
         android:onClick="onClickButton"/>
