@@ -2,6 +2,7 @@ package com.example.huenoh_mapd711_assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 public class ProfileActivity extends AppCompatActivity {
 
     EditText userNameFirst, userNameLast, userEmail, userPhone, userAddress, userCity, userPostalCode;
+
+    Customer m_customer = new Customer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +37,15 @@ public class ProfileActivity extends AppCompatActivity {
         // Display user information
         CustomerManager customerManager = new CustomerManager(this);
         try {
-            Customer customer = customerManager.getCustomerById(strUserName , "userName");
-            if (null != customer) {
-                userNameFirst.setText(customer.getFirstName());
-                userNameLast.setText(customer.getLastName());
-                userPhone.setText(customer.getPhoneNumber());
-                userEmail.setText(customer.getEmail());
-                userAddress.setText(customer.getAddress());
-                userCity.setText(customer.getCity());
-                userPostalCode.setText(customer.getPostalCode());
+            m_customer = customerManager.getCustomerById(strUserName , "userName");
+            if (null != m_customer) {
+                userNameFirst.setText(m_customer.getFirstName());
+                userNameLast.setText(m_customer.getLastName());
+                userPhone.setText(m_customer.getPhoneNumber());
+                userEmail.setText(m_customer.getEmail());
+                userAddress.setText(m_customer.getAddress());
+                userCity.setText(m_customer.getCity());
+                userPostalCode.setText(m_customer.getPostalCode());
 
             } else {}
         }
@@ -60,11 +63,30 @@ public class ProfileActivity extends AppCompatActivity {
     /**
      * This method is for the click action of the Update button
      * It update customer's profile to the DB
-     * @param view Confirm Order button
+     * @param view btnUpdateProfile
      */
     public void onClickBtnUpdate(View view) {
         //TODO : validation
 
+        // Initialize ContentValues for the order
+        ContentValues contentValues;
+        contentValues = new ContentValues();
+        //contentValues.put("customerId", m_customer.getCustomerId());
+        //contentValues.put("userName", m_customer.getUserName());
+        contentValues.put("address", userAddress.getText().toString());
+        contentValues.put("city", userCity.getText().toString());
+        contentValues.put("postalCode", userPostalCode.getText().toString());
+        contentValues.put("phoneNumber", userPhone.getText().toString());
+        contentValues.put("email", userEmail.getText().toString());
+        //contentValues.put("password", userEmail.getText().toString()); //TODO
+
+        // Update the order
+        CustomerManager customerManager = new CustomerManager(this);
+        try {
+            customerManager.editRow(m_customer.getCustomerId(), "customerId", contentValues, CustomerManager.TABLE_NAME);
+        } catch (Exception exception) {
+            Log.i("Error: ", exception.getMessage());
+        }
 
     }
 }
