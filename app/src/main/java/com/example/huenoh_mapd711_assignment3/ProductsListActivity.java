@@ -37,8 +37,8 @@ public class ProductsListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                // Move to ProductInformation activity
-                Intent intent = new Intent(ProductsListActivity. this, ProductInformation.class);
+                // Move to ProductDetailsActivity activity
+                Intent intent = new Intent(ProductsListActivity. this, ProductDetailsActivity.class);
                 intent.putExtra("classProduct", m_products[i]);
                 startActivity(intent);
             }

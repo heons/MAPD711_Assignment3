@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class ProductsStatusActivity extends AppCompatActivity {
+public class OrderEditActivity extends AppCompatActivity {
 
     /* Member variables */
     // Array for quantity spinner
@@ -32,7 +32,7 @@ public class ProductsStatusActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products_status);
+        setContentView(R.layout.activity_order_edit);
 
         // Get views
         m_productName = findViewById(R.id.itemName);

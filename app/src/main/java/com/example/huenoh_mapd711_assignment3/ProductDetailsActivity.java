@@ -10,7 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ProductInformation extends AppCompatActivity {
+public class ProductDetailsActivity extends AppCompatActivity {
 
     // View Object
     TextView productName,productDescription,productPrice;
@@ -25,7 +25,7 @@ public class ProductInformation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_information);
+        setContentView(R.layout.activity_product_details);
 
         productName = findViewById(R.id.itemName);
         productDescription = findViewById(R.id.itemDescription);
@@ -63,7 +63,7 @@ public class ProductInformation extends AppCompatActivity {
         if(selQuantity != 0) {
             // Send product information and quantity to order detail.
             // TODO : need to check quantity of the product and reserve it in DB.
-            Intent intent = new Intent(ProductInformation.this, OrderDetails.class);
+            Intent intent = new Intent(ProductDetailsActivity.this, OrderDetailsActivity.class);
             intent.putExtra("classProduct", m_product);
             intent.putExtra("quantity", selQuantity);
             startActivity(intent);

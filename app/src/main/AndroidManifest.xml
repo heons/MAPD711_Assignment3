@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".ProductsStatusActivity" />
+        <activity android:name=".OrderEditActivity" />
         <activity android:name=".OrdersListActivity" />
-        <activity android:name=".OrderDetails" />
-        <activity android:name=".ProductInformation" />
+        <activity android:name=".OrderDetailsActivity" />
+        <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".ProductsListActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class OrderDetails extends AppCompatActivity {
+public class OrderDetailsActivity extends AppCompatActivity {
 
     /* Member variables */
     // OrderIDs - will be increased automatically.

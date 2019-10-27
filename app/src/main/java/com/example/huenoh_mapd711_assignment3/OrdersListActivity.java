@@ -41,7 +41,7 @@ public class OrdersListActivity extends AppCompatActivity {
 
                 String userType = pref.getString("UserType", "");
 
-                Intent intent = new Intent(OrdersListActivity. this,ProductsStatusActivity.class);
+                Intent intent = new Intent(OrdersListActivity. this, OrderEditActivity.class);
                 intent.putExtra("classOrder", m_orders[i]);
                 startActivity(intent);
             }
