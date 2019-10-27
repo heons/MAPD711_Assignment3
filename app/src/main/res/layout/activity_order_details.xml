@@ -165,15 +165,10 @@
 
 
         <Button
+            style="@style/btn_default"
             android:layout_width="334dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:onClick="onClickBtnConfirmOrder"
             android:text="Confirm Order"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:onClick="onClickBtnConfirmOrder"/>
 
     </LinearLayout>
 
