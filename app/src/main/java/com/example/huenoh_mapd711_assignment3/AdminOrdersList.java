@@ -62,7 +62,7 @@ public class AdminOrdersList extends AppCompatActivity {
         // Order Manager
         OrderManager orderManager = new OrderManager(this);
 
-        // Get all the products from the database.
+        // Get all the orders from the database.
         try {
             m_orders = orderManager.getAllOrders();
         }
