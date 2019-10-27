@@ -276,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 1000.9);
         contentValues.put("quantity", 1);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
@@ -292,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 1100.9);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
@@ -308,6 +310,7 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 500);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
@@ -324,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 610.10);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
@@ -340,6 +344,7 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("price", 610.10);
         contentValues.put("quantity", 10);
         contentValues.put("category", "Mobile");
+        contentValues.put("description",getString(R.string.dummy_description));
 
         // Add to the DB
         try {
