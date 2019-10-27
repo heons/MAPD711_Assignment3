@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/text_defaultLabel"
+            style="@style/text_defaultLabel.bold"
             android:text="@string/profileFirstName" />
 
         <EditText
@@ -24,7 +24,7 @@
 
 
         <TextView
-            style="@style/text_defaultLabel"
+            style="@style/text_defaultLabel.bold"
             android:text="@string/profileLastName" />
 
         <EditText
@@ -35,7 +35,7 @@
 
 
         <TextView
-            style="@style/text_defaultLabel"
+            style="@style/text_defaultLabel.bold"
             android:text="@string/profileEmail" />
 
         <EditText
@@ -46,7 +46,7 @@
 
 
         <TextView
-            style="@style/text_defaultLabel"
+            style="@style/text_defaultLabel.bold"
             android:text="@string/profilePhone" />
 
         <EditText
@@ -57,7 +57,7 @@
 
 
         <TextView
-            style="@style/text_defaultLabel"
+            style="@style/text_defaultLabel.bold"
             android:text="@string/profileAddress" />
 
         <EditText
@@ -69,7 +69,7 @@
 
 
         <TextView
-            style="@style/text_defaultLabel"
+            style="@style/text_defaultLabel.bold"
             android:text="@string/profileCity" />
 
         <EditText
@@ -80,7 +80,7 @@
 
 
         <TextView
-            style="@style/text_defaultLabel"
+            style="@style/text_defaultLabel.bold"
             android:text="@string/profilePostalCode" />
 
         <EditText

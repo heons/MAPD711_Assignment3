@@ -9,13 +9,35 @@
     </style>
 
     <style name = "text_defaultLabel">
-    <item name = "android:layout_width">wrap_content</item>
+        <item name = "android:layout_width">wrap_content</item>
         <item name = "android:layout_height">wrap_content</item>
         <item name = "android:layout_marginLeft">20dp</item>
+        <item name = "android:layout_marginRight">10dp</item>
         <item name = "android:layout_marginTop">20dp</item>
         <item name = "android:textSize">20dp</item>
+    </style>
+    <style name = "text_defaultLabel.bold">
         <item name = "android:textStyle">bold</item>
     </style>
+    <style name = "text_defaultLabel.headline">
+        <item name = "android:layout_gravity">center_horizontal</item>
+        <item name = "android:textStyle">bold</item>
+        <item name = "android:textSize">24dp</item>
+    </style>
+
+    <style name = "text_defaultLabel.item">
+        <item name = "android:layout_marginTop">10dp</item>
+        <item name = "android:layout_marginLeft">10dp</item>
+    </style>
+    <style name = "text_defaultLabel.item.title">
+        <item name = "android:textStyle">bold</item>
+        <item name = "android:textSize">18dp</item>
+    </style>
+    <style name = "text_defaultLabel.item.data">
+        <item name = "android:textSize">16dp</item>
+    </style>
+
+
 
     <style name = "text_defaultEdit">
         <item name = "android:layout_width">match_parent</item>

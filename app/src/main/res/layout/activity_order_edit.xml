@@ -10,23 +10,14 @@
 
     <TextView
         android:id="@+id/itemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/dummy"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        style="@style/text_defaultLabel.bold"
+        android:text="@string/dummy" />
 
 
     <TextView
         android:id="@+id/itemDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="@string/dummy"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"/>
+        style="@style/text_defaultLabel"
+        android:text="@string/dummy" />
 
 
     <LinearLayout
@@ -35,21 +26,12 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/productPrice"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            style="@style/text_defaultLabel.bold"
+            android:text="@string/productPrice" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:id="@+id/itemPrice"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"/>
+            style="@style/text_defaultLabel"/>
 
     </LinearLayout>
 
@@ -59,13 +41,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/productQuantity"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            style="@style/text_defaultLabel.bold"
+            android:text="@string/productQuantity" />
 
         <Spinner
             android:id="@+id/quantitySpinner1"
@@ -81,13 +58,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/orderStatus"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            style="@style/text_defaultLabel.bold"
+            android:text="@string/orderStatus" />
 
         <Spinner
             android:id="@+id/statusSpinner"
