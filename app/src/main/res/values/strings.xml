@@ -10,7 +10,7 @@
     <string name="activity_title_orderEdit">Order Edit</string>
     <string name="activity_title_profile">Profile</string>
 
-    
+
     <string name="login_userName">User Name</string>
     <string name="login_password">Password</string>
     <string name="login_rememberPassword">Remember Password</string>
@@ -59,8 +59,21 @@
     // button
     <string name="btnOrder">Order</string>
 
+
+    // Strings for validations
+    <string name="digits_alphabetsOnly">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="digits_alphabetsOnlyS">a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="digits_address">1234567890,.-a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="digits_phone">1234567890+-</string>
+    <string name="digits_email">1234567890.-@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="digits_alphabetsNumbers">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</string>
+    <string name="digits_alphabetsNumbersS">a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</string>
+
+
     // string for dummy
     <string name="dummy">Dummy</string>
     <string name="dummy_description">The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system (OS), and as of 2017, there were 2.2 million apps available for it through the Apple App Store, according to Statistic.</string>
+
+
 
 </resources>

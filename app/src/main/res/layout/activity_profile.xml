@@ -41,8 +41,9 @@
         <EditText
             android:id="@+id/profileEmail"
             style="@style/text_defaultEdit"
-            android:inputType="textPersonName"
-            android:hint="@string/hintEmail" />
+            android:hint="@string/hintEmail"
+            android:inputType="textEmailSubject"
+            android:digits="@string/digits_email"/>
 
 
         <TextView
@@ -52,8 +53,9 @@
         <EditText
             android:id="@+id/profilePhone"
             style="@style/text_defaultEdit"
-            android:inputType="textPersonName"
-            android:hint="@string/hintPhone" />
+            android:hint="@string/hintPhone"
+            android:inputType="phone"
+            android:digits="@string/digits_phone"/>
 
 
         <TextView
@@ -63,8 +65,9 @@
         <EditText
             android:id="@+id/profileAddress"
             style="@style/text_defaultEdit"
-            android:inputType="textPersonName"
-            android:hint="@string/hintAddress" />
+            android:hint="@string/hintAddress"
+            android:inputType="text"
+            android:digits="@string/digits_address"/>
 
 
 
@@ -75,8 +78,9 @@
         <EditText
             android:id="@+id/profileCity"
             style="@style/text_defaultEdit"
-            android:inputType="textPersonName"
-            android:hint="@string/hintCity" />
+            android:hint="@string/hintCity"
+            android:inputType="text"
+            android:digits="@string/digits_alphabetsOnly"/>
 
 
         <TextView
@@ -86,8 +90,9 @@
         <EditText
             android:id="@+id/profilePostalCode"
             style="@style/text_defaultEdit"
-            android:inputType="textPersonName"
-            android:hint="@string/hintPostalCode" />
+            android:hint="@string/hintPostalCode"
+            android:inputType="text"
+            android:digits="@string/digits_alphabetsNumbers"/>
 
 
         <Button
