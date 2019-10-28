@@ -9,8 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ProductsListActivity extends AppCompatActivity {
 
@@ -18,7 +19,8 @@ public class ProductsListActivity extends AppCompatActivity {
     private ListView m_listViewProduct; // List view for products
 
     private Product[] m_products;       // Array for products
-    private String[] m_strProductsList; // Array for products' display strings
+
+    private ProductAdapter m_adapter;   // Adapter for product list
 
 
     @Override
@@ -102,19 +104,15 @@ public class ProductsListActivity extends AppCompatActivity {
         }
 
 
-        // Update strings for the list adapter
-        m_strProductsList = new String[m_products.length];
+        // Create ArrayList for the product list
+        ArrayList<Product> productsList = new ArrayList<>();
         for (int i = 0; i < m_products.length; ++i) {
-            m_strProductsList[i] = Integer.toString(i + 1) + ". "
-                    + m_products[i].getProductName()
-                    + "(Quantity : " + m_products[i].getQuantity() + ")";
+            productsList.add(m_products[i]);
         }
 
-        // Create array adapter for the list view
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, m_strProductsList);
-
-        // Get list view for the products and set the adapter.
-        m_listViewProduct.setAdapter(adapter);
+        // Create adapter and set it to product list
+        m_adapter = new ProductAdapter(this, productsList);
+        m_listViewProduct.setAdapter(m_adapter);
     }
 
 }
