@@ -46,6 +46,9 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         TextView price = (TextView) listItem.findViewById(R.id.textView_price);
         price.setText("$" + Double.toString(currentProduct.getPrice()));
 
+        TextView quantity = (TextView) listItem.findViewById(R.id.textView_quantity);
+        quantity.setText("Quantity: " + Integer.toString(currentProduct.getQuantity()));
+
         return listItem;
     }
 }

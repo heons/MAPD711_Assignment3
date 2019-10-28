@@ -19,4 +19,9 @@
         style="@style/text_listLabel"
         android:layout_toRightOf="@id/textView_name" />
 
+    <TextView
+        android:id="@+id/textView_quantity"
+        style="@style/text_listLabel"
+        android:layout_alignParentRight="true" />
+
 </RelativeLayout>
