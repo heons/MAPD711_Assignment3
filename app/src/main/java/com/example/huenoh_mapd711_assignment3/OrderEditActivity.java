@@ -103,19 +103,19 @@ public class OrderEditActivity extends AppCompatActivity {
             m_spinnerQuantity.setEnabled(false);
         } else if (m_userType.equals("customer")) {
             m_spinnerStatus.setEnabled(false);
+
+            // Check time to disable changes
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime timeOrder = LocalDateTime.parse(m_order.getOrderDate(), dtf);
+            LocalDateTime timeNow = LocalDateTime.now();
+
+            // If time passed more than a day not possible to make a change
+            long diff = ChronoUnit.DAYS.between(timeOrder, timeNow);
+            if(diff > 0) {
+                m_spinnerQuantity.setEnabled(false);
+                m_btnUpdate.setEnabled(false);
+            }
         } else {}
-
-        // Check time to disable changes
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime timeOrder = LocalDateTime.parse(m_order.getOrderDate(), dtf);
-        LocalDateTime timeNow = LocalDateTime.now();
-
-        // If time passed more than a day not possible to make a change
-        long diff = ChronoUnit.DAYS.between(timeOrder, timeNow);
-        if(diff > 0) {
-            m_spinnerQuantity.setEnabled(false);
-            m_btnUpdate.setEnabled(false);
-        }
 
     }
 
