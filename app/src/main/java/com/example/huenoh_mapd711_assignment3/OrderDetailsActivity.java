@@ -50,6 +50,22 @@ public class OrderDetailsActivity extends AppCompatActivity {
         productQuantity = findViewById(R.id.productQuantity);
         productCategory = findViewById(R.id.productCategory);
 
+        //TODO : find better way to do this.
+        // Update orderId for new orders
+        OrderManager orderManager = new OrderManager(this);
+        try {
+            Order[] orders = orderManager.getAllOrders();
+            for(int i = 0; i < orders.length; ++i) {
+                if(orders[i].getOrderId() > m_orderId) {
+                    m_orderId = orders[i].getOrderId();
+                }
+            }
+        }
+        catch (Exception exception)
+        {
+            Log.i("Error: ",exception.getMessage());
+        }
+
 
         // Get product from previous activity.
         Intent intent = getIntent();
